@@ -18,6 +18,16 @@ enum OrderStatus {
   CANCELLED
 }
 
+enum ProductCategory {
+  BUDDHA
+  GUANYIN
+  FORTUNE_BEAN
+  LEAF
+  RUYI
+  BANGLE
+  OTHER
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -33,6 +43,7 @@ model Product {
   name        String
   slug        String      @unique
   description String
+  category    ProductCategory @default(OTHER)
   priceCents  Int
   imageUrl    String?
   stockQty    Int         @default(0)

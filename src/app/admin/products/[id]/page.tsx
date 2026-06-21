@@ -13,7 +13,7 @@ export default async function EditProductPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-6">Edit product</h1>
+      <h1 className="font-serif text-2xl text-ink mb-6">Edit product</h1>
       <ProductForm initial={product} />
     </div>
   );

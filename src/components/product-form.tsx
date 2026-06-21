@@ -2,12 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { PRODUCT_CATEGORIES, type ProductCategoryValue } from "@/lib/categories";
 
 type ProductFormValues = {
   id?: string;
   name: string;
   slug: string;
   description: string;
+  category: ProductCategoryValue;
   priceCents: number;
   imageUrl: string | null;
   stockQty: number;
@@ -19,6 +21,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
   const [name, setName] = useState(initial?.name ?? "");
   const [slug, setSlug] = useState(initial?.slug ?? "");
   const [description, setDescription] = useState(initial?.description ?? "");
+  const [category, setCategory] = useState<ProductCategoryValue>(initial?.category ?? "OTHER");
   const [price, setPrice] = useState(initial ? (initial.priceCents / 100).toString() : "");
   const [imageUrl, setImageUrl] = useState(initial?.imageUrl ?? "");
   const [stockQty, setStockQty] = useState(initial?.stockQty?.toString() ?? "0");
@@ -53,6 +56,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
       name,
       slug,
       description,
+      category,
       priceCents: Math.round(parseFloat(price) * 100),
       imageUrl,
       stockQty: parseInt(stockQty, 10),
@@ -93,37 +97,53 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
     router.refresh();
   }
 
+  const inputClass = "border border-line bg-ivory-light rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold/40";
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md">
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
         Name
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="border rounded px-3 py-2"
+          className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
         Slug
         <input
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
           pattern="[a-z0-9-]+"
-          className="border rounded px-3 py-2"
+          className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
+        Category
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value as ProductCategoryValue)}
+          className={inputClass}
+        >
+          {PRODUCT_CATEGORIES.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.zh} / {c.en}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="flex flex-col gap-1 text-ink">
         Description
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={4}
-          className="border rounded px-3 py-2"
+          className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
         Price (USD)
         <input
           type="number"
@@ -132,10 +152,10 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
-          className="border rounded px-3 py-2"
+          className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
         Stock quantity
         <input
           type="number"
@@ -143,19 +163,19 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           value={stockQty}
           onChange={(e) => setStockQty(e.target.value)}
           required
-          className="border rounded px-3 py-2"
+          className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-ink">
         Image
         <input type="file" accept="image/*" onChange={handleFileChange} />
-        {uploading && <span className="text-sm text-zinc-500">Uploading…</span>}
+        {uploading && <span className="text-sm text-ink-soft">Uploading…</span>}
         {imageUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={imageUrl} alt="Preview" className="h-24 w-24 object-cover rounded mt-2" />
         )}
       </label>
-      <label className="flex items-center gap-2">
+      <label className="flex items-center gap-2 text-ink">
         <input
           type="checkbox"
           checked={isActive}
@@ -168,7 +188,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
         <button
           type="submit"
           disabled={saving || uploading}
-          className="bg-black text-white rounded px-4 py-2 disabled:opacity-50"
+          className="bg-gold text-ivory-light rounded px-4 py-2 disabled:opacity-50"
         >
           {saving ? "Saving…" : "Save"}
         </button>

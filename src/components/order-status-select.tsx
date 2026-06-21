@@ -33,7 +33,7 @@ export function OrderStatusSelect({
       value={value}
       disabled={saving}
       onChange={(e) => handleChange(e.target.value)}
-      className="border rounded px-2 py-1 text-sm"
+      className="border border-line bg-ivory-light rounded px-2 py-1 text-sm text-ink"
     >
       {STATUSES.map((s) => (
         <option key={s} value={s}>

@@ -2,6 +2,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { formatPrice } from "@/lib/format";
+import { categoryLabel } from "@/lib/categories";
+import { Divider } from "@/components/divider";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 
 export default async function ProductPage({
@@ -16,21 +18,29 @@ export default async function ProductPage({
     notFound();
   }
 
+  const category = categoryLabel(product.category);
+
   return (
     <main className="flex-1 mx-auto max-w-3xl w-full px-4 py-10 grid sm:grid-cols-2 gap-8">
-      <div className="aspect-square bg-zinc-100 rounded overflow-hidden relative">
+      <div className="aspect-square bg-ivory-light border border-line rounded overflow-hidden relative">
         {product.imageUrl ? (
           <Image src={product.imageUrl} alt={product.name} fill className="object-cover" />
         ) : (
-          <div className="h-full w-full flex items-center justify-center text-zinc-400 text-sm">
+          <div className="h-full w-full flex items-center justify-center text-ink-soft text-sm">
             No image
           </div>
         )}
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-semibold">{product.name}</h1>
-        <p className="text-xl">{formatPrice(product.priceCents)}</p>
-        <p className="text-zinc-600 whitespace-pre-line">{product.description}</p>
+        {category && (
+          <p className="text-xs tracking-widest text-gold">
+            {category.zh} · {category.en.toUpperCase()}
+          </p>
+        )}
+        <h1 className="font-serif text-2xl text-ink">{product.name}</h1>
+        <Divider className="!justify-start" />
+        <p className="text-xl text-gold">{formatPrice(product.priceCents)}</p>
+        <p className="text-ink-soft whitespace-pre-line leading-relaxed">{product.description}</p>
         {product.stockQty > 0 ? (
           <AddToCartButton
             productId={product.id}

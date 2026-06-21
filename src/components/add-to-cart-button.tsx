@@ -24,9 +24,9 @@ export function AddToCartButton({
         setAdded(true);
         setTimeout(() => setAdded(false), 1500);
       }}
-      className="bg-black text-white rounded px-4 py-2 w-fit"
+      className="bg-gold text-ivory-light rounded px-4 py-2 w-fit tracking-wide hover:bg-gold-soft transition-colors"
     >
-      {added ? "Added!" : "Add to cart"}
+      {added ? "已加入 Added!" : "加入购物车 Add to cart"}
     </button>
   );
 }

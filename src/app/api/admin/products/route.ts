@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { PRODUCT_CATEGORY_VALUES } from "@/lib/categories";
 
 const productSchema = z.object({
   name: z.string().min(1),
   slug: z.string().min(1).regex(/^[a-z0-9-]+$/, "Slug must be lowercase letters, numbers, and hyphens"),
   description: z.string(),
+  category: z.enum(PRODUCT_CATEGORY_VALUES),
   priceCents: z.number().int().nonnegative(),
   imageUrl: z.string().url().optional().or(z.literal("")),
   stockQty: z.number().int().nonnegative(),

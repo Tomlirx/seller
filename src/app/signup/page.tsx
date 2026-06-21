@@ -41,7 +41,7 @@ export default function SignupPage() {
 
   return (
     <div className="mx-auto max-w-sm w-full px-4 py-16">
-      <h1 className="text-2xl font-semibold mb-6">Sign up</h1>
+      <h1 className="font-serif text-2xl text-ink mb-6">注册 · Sign up</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="email"
@@ -49,7 +49,7 @@ export default function SignupPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="border rounded px-3 py-2"
+          className="border border-line bg-ivory-light rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold/40"
         />
         <input
           type="password"
@@ -58,19 +58,19 @@ export default function SignupPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={8}
-          className="border rounded px-3 py-2"
+          className="border border-line bg-ivory-light rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gold/40"
         />
         {error && <p className="text-red-600 text-sm">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className="bg-black text-white rounded px-3 py-2 disabled:opacity-50"
+          className="bg-gold text-ivory-light rounded px-3 py-2 tracking-wide hover:bg-gold-soft transition-colors disabled:opacity-50"
         >
-          {loading ? "Creating account…" : "Sign up"}
+          {loading ? "创建账号中… Creating account…" : "注册 Sign up"}
         </button>
       </form>
-      <p className="text-sm mt-4">
-        Already have an account? <a href="/login" className="underline">Log in</a>
+      <p className="text-sm mt-4 text-ink-soft">
+        已有账号？ Already have an account? <a href="/login" className="text-gold underline">登录 Log in</a>
       </p>
     </div>
   );

@@ -123,9 +123,9 @@ export default async function Home({
                   className="group flex flex-col gap-2"
                 >
                   <div className="aspect-square bg-ivory-light border border-line rounded overflow-hidden relative">
-                    {product.imageUrl ? (
+                    {product.imageUrls[0] ? (
                       <Image
-                        src={product.imageUrl}
+                        src={product.imageUrls[0]}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:opacity-90"

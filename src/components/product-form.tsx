@@ -11,7 +11,7 @@ type ProductFormValues = {
   description: string;
   category: ProductCategoryValue;
   priceCents: number;
-  imageUrl: string | null;
+  imageUrls: string[];
   stockQty: number;
   isActive: boolean;
 };
@@ -23,28 +23,50 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
   const [description, setDescription] = useState(initial?.description ?? "");
   const [category, setCategory] = useState<ProductCategoryValue>(initial?.category ?? "OTHER");
   const [price, setPrice] = useState(initial ? (initial.priceCents / 100).toString() : "");
-  const [imageUrl, setImageUrl] = useState(initial?.imageUrl ?? "");
+  const [imageUrls, setImageUrls] = useState<string[]>(initial?.imageUrls ?? []);
   const [stockQty, setStockQty] = useState(initial?.stockQty?.toString() ?? "0");
   const [isActive, setIsActive] = useState(initial?.isActive ?? true);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  async function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
     setUploading(true);
     setError(null);
-    const formData = new FormData();
-    formData.append("file", file);
-    const res = await fetch("/api/upload", { method: "POST", body: formData });
-    const data = await res.json();
-    setUploading(false);
-    if (!res.ok) {
-      setError(data.error ?? "Upload failed");
-      return;
+
+    const uploaded: string[] = [];
+    for (const file of files) {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Upload failed");
+        setUploading(false);
+        return;
+      }
+      uploaded.push(data.url);
     }
-    setImageUrl(data.url);
+
+    setImageUrls((prev) => [...prev, ...uploaded]);
+    setUploading(false);
+    e.target.value = "";
+  }
+
+  function removeImage(url: string) {
+    setImageUrls((prev) => prev.filter((u) => u !== url));
+  }
+
+  function moveImage(index: number, direction: -1 | 1) {
+    setImageUrls((prev) => {
+      const next = [...prev];
+      const target = index + direction;
+      if (target < 0 || target >= next.length) return prev;
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -58,7 +80,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
       description,
       category,
       priceCents: Math.round(parseFloat(price) * 100),
-      imageUrl,
+      imageUrls,
       stockQty: parseInt(stockQty, 10),
       isActive,
     };
@@ -166,15 +188,49 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           className={inputClass}
         />
       </label>
-      <label className="flex flex-col gap-1 text-ink">
-        Image
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+      <div className="flex flex-col gap-2 text-ink">
+        <label className="flex flex-col gap-1">
+          Images
+          <input type="file" accept="image/*" multiple onChange={handleFilesChange} />
+        </label>
         {uploading && <span className="text-sm text-ink-soft">Uploading…</span>}
-        {imageUrl && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={imageUrl} alt="Preview" className="h-24 w-24 object-cover rounded mt-2" />
+        {imageUrls.length > 0 && (
+          <p className="text-xs text-ink-soft">First image is used as the storefront thumbnail.</p>
         )}
-      </label>
+        <div className="flex flex-wrap gap-3">
+          {imageUrls.map((url, index) => (
+            <div key={url} className="flex flex-col items-center gap-1">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={url} alt={`Image ${index + 1}`} className="h-24 w-24 object-cover rounded border border-line" />
+              <div className="flex items-center gap-1 text-xs">
+                <button
+                  type="button"
+                  onClick={() => moveImage(index, -1)}
+                  disabled={index === 0}
+                  className="text-gold disabled:opacity-30"
+                >
+                  ←
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveImage(index, 1)}
+                  disabled={index === imageUrls.length - 1}
+                  className="text-gold disabled:opacity-30"
+                >
+                  →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => removeImage(url)}
+                  className="text-red-600 underline ml-1"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <label className="flex items-center gap-2 text-ink">
         <input
           type="checkbox"

@@ -45,7 +45,7 @@ model Product {
   description String
   category    ProductCategory @default(OTHER)
   priceCents  Int
-  imageUrl    String?
+  imageUrls   String[]        @default([])
   stockQty    Int         @default(0)
   isActive    Boolean     @default(true)
   orderItems  OrderItem[]

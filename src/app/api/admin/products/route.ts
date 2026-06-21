@@ -9,7 +9,7 @@ const productSchema = z.object({
   description: z.string(),
   category: z.enum(PRODUCT_CATEGORY_VALUES),
   priceCents: z.number().int().nonnegative(),
-  imageUrl: z.string().url().optional().or(z.literal("")),
+  imageUrls: z.array(z.string().url()),
   stockQty: z.number().int().nonnegative(),
   isActive: z.boolean(),
 });
@@ -21,15 +21,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid input" }, { status: 400 });
   }
 
-  const { imageUrl, ...rest } = parsed.data;
-
-  const existing = await prisma.product.findUnique({ where: { slug: rest.slug } });
+  const existing = await prisma.product.findUnique({ where: { slug: parsed.data.slug } });
   if (existing) {
     return NextResponse.json({ error: "A product with this slug already exists" }, { status: 409 });
   }
 
   const product = await prisma.product.create({
-    data: { ...rest, imageUrl: imageUrl || null },
+    data: parsed.data,
   });
 
   return NextResponse.json(product, { status: 201 });

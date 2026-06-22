@@ -1,0 +1,74 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mountainFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9bfa8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c9bfa8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="mountainNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7c9a8e" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#7c9a8e" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="jadeBody" cx="35%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#e3edE7"/>
+      <stop offset="55%" stop-color="#a9c2b6"/>
+      <stop offset="100%" stop-color="#7c9a8e"/>
+    </radialGradient>
+    <radialGradient id="jadeBangle" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#e6efe9"/>
+      <stop offset="55%" stop-color="#b9cdc3"/>
+      <stop offset="100%" stop-color="#86a59a"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f4ebdb"/>
+
+  <!-- distant ink-wash mountains -->
+  <path d="M700,420 Q820,300 920,380 Q1040,280 1160,360 Q1300,260 1460,360 L1600,420 L1600,560 L700,560 Z" fill="url(#mountainFar)"/>
+  <!-- nearer ink-wash mountains -->
+  <path d="M820,480 Q940,380 1040,450 Q1160,360 1280,440 Q1400,370 1520,440 L1600,470 L1600,600 L820,600 Z" fill="url(#mountainNear)"/>
+
+  <!-- thin gold divider with center dot -->
+  <g stroke="#a9854f" stroke-width="1.5">
+    <line x1="1230" y1="150" x2="1290" y2="150"/>
+    <line x1="1330" y1="150" x2="1390" y2="150"/>
+  </g>
+  <circle cx="1310" cy="150" r="4" fill="#a9854f"/>
+
+  <!-- botanical line accent, lower left -->
+  <g fill="none" stroke="#7c9a8e" stroke-width="2" stroke-linecap="round" opacity="0.5">
+    <path d="M60,860 C90,760 140,700 230,660"/>
+    <path d="M230,660 C250,630 260,605 250,580"/>
+    <path d="M230,660 C265,650 295,635 310,610"/>
+    <path d="M190,700 C175,680 168,658 172,635"/>
+    <path d="M150,740 C130,725 118,705 116,682"/>
+  </g>
+
+  <!-- jade leaf pendant: clear, recognizable leaf silhouette with bail -->
+  <g transform="translate(1150,380)">
+    <rect x="-12" y="-122" width="24" height="17" rx="8" fill="none" stroke="#a9854f" stroke-width="3"/>
+    <path d="M3,-104
+             C42,-92 62,-38 56,16
+             C51,64 28,100 4,116
+             C-14,102 -50,64 -54,12
+             C-58,-36 -34,-90 3,-104 Z"
+          fill="url(#jadeBody)" stroke="#4f6f63" stroke-width="2.5"/>
+    <!-- center vein -->
+    <path d="M2,-90 C8,-40 10,30 3,104" fill="none" stroke="#4f6f63" stroke-width="1.5" opacity="0.45"/>
+    <!-- side veins -->
+    <path d="M2,-40 C16,-28 28,-14 34,4" fill="none" stroke="#4f6f63" stroke-width="1" opacity="0.35"/>
+    <path d="M3,10 C18,22 30,36 36,54" fill="none" stroke="#4f6f63" stroke-width="1" opacity="0.35"/>
+    <path d="M0,-40 C-14,-28 -26,-14 -32,4" fill="none" stroke="#4f6f63" stroke-width="1" opacity="0.35"/>
+    <path d="M0,15 C-13,28 -23,42 -28,60" fill="none" stroke="#4f6f63" stroke-width="1" opacity="0.35"/>
+  </g>
+
+  <!-- jade bangle -->
+  <g transform="translate(1290,640)">
+    <circle r="100" fill="url(#jadeBangle)"/>
+    <circle r="60" fill="#f4ebdb"/>
+    <circle r="100" fill="none" stroke="#4f6f63" stroke-width="1.5" opacity="0.45"/>
+    <circle r="60" fill="none" stroke="#4f6f63" stroke-width="1.5" opacity="0.45"/>
+  </g>
+
+  <!-- soft gold ground line -->
+  <line x1="0" y1="820" x2="1600" y2="820" stroke="#ddcfaf" stroke-width="1"/>
+</svg>

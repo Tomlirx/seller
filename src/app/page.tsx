@@ -29,13 +29,13 @@ export default async function Home({
       {/* Hero */}
       <section className="relative h-[480px] sm:h-[560px] w-full overflow-hidden">
         <Image
-          src="/marketing/lanyu-hero.jpg"
+          src="/marketing/lanyu-hero-illustrated.svg"
           alt="岚玉 — 天然翡翠"
           fill
           priority
-          className="object-cover object-[88%_45%]"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--ivory)_0%,var(--ivory)_56%,transparent_88%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--ivory)_0%,var(--ivory)_42%,transparent_75%)]" />
         <div className="relative z-10 h-full mx-auto max-w-5xl px-4 flex flex-col justify-center gap-4 max-w-md">
           <p className="font-serif text-4xl text-ink">岚玉</p>
           <p className="text-sm tracking-[0.3em] text-gold">LAN YU</p>

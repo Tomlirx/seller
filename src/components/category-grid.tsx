@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { PRODUCT_CATEGORIES } from "@/lib/categories";
 
 export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "circles" }) {
-  const categories = PRODUCT_CATEGORIES.filter((c) => c.value !== "OTHER");
+  const categories = PRODUCT_CATEGORIES;
 
   const representativeProducts = await Promise.all(
     categories.map((c) =>
@@ -15,12 +15,17 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
     )
   );
 
+  const categoryConfigs = await prisma.categoryConfig.findMany();
+  const categoryImageMap = Object.fromEntries(
+    categoryConfigs.map((cfg) => [cfg.category, cfg.imageUrl])
+  );
+
   if (variant === "circles") {
     return (
       <div className="flex flex-wrap justify-center gap-8 sm:gap-10">
         {categories.map((c, i) => {
           const product = representativeProducts[i];
-          const image = product?.imageUrls[0];
+          const image = product?.imageUrls[0] || categoryImageMap[c.value];
           return (
             <Link
               key={c.value}
@@ -61,7 +66,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
       {categories.map((c, i) => {
         const product = representativeProducts[i];
-        const image = product?.imageUrls[0];
+        const image = product?.imageUrls[0] || categoryImageMap[c.value];
         return (
           <Link
             key={c.value}

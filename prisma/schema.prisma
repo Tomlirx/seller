@@ -88,3 +88,10 @@ model OrderItem {
   quantity      Int
   unitPriceCents Int
 }
+
+model CategoryConfig {
+  id            String @id @default(cuid())
+  category      ProductCategory @unique
+  imageUrl      String?
+  updatedAt     DateTime @updatedAt
+}

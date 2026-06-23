@@ -25,7 +25,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
       <div className="flex flex-wrap justify-center gap-8 sm:gap-10">
         {categories.map((c, i) => {
           const product = representativeProducts[i];
-          const image = product?.imageUrls[0] || categoryImageMap[c.value];
+          const image = categoryImageMap[c.value] || product?.imageUrls[0];
           return (
             <Link
               key={c.value}

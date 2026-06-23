@@ -66,7 +66,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
       {categories.map((c, i) => {
         const product = representativeProducts[i];
-        const image = product?.imageUrls[0] || categoryImageMap[c.value];
+        const image = categoryImageMap[c.value] || product?.imageUrls[0];
         return (
           <Link
             key={c.value}

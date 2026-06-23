@@ -31,6 +31,8 @@ async function fetchHtml(url: string): Promise<string> {
   return res.text();
 }
 
+const EXCLUDED_SLUG_PATTERNS = [/crystal-ring/i, /crystal-bracelet/i];
+
 async function getProductUrls(): Promise<string[]> {
   const urls = new Set<string>();
   for (const page of [1, 2, 3]) {
@@ -39,12 +41,36 @@ async function getProductUrls(): Promise<string[]> {
     const $ = cheerio.load(html);
     $('a[href*="/product/"]').each((_, el) => {
       const href = $(el).attr("href");
-      if (href && /^https:\/\/shop\.antsclass\.com\/product\/[a-z0-9-]+\/?$/.test(href)) {
-        urls.add(href.endsWith("/") ? href : `${href}/`);
+      // Slugs can contain percent-encoded non-ASCII characters (e.g. Chinese),
+      // so match any non-slash path segment rather than restricting to [a-z0-9-].
+      if (href && /^https:\/\/shop\.antsclass\.com\/product\/[^/]+\/?$/.test(href)) {
+        const normalized = href.endsWith("/") ? href : `${href}/`;
+        if (!EXCLUDED_SLUG_PATTERNS.some((p) => p.test(normalized))) {
+          urls.add(normalized);
+        }
       }
     });
   }
   return Array.from(urls);
+}
+
+function detectCategory(name: string, tags: string[]): ProductCategory {
+  if (tags.some((t) => t.includes("bracelet"))) return "BANGLE";
+  const lower = name.toLowerCase();
+  if (lower.includes("leaf") || name.includes("叶子")) return "LEAF";
+  if (lower.includes("ruyi") || name.includes("如意")) return "RUYI";
+  if (lower.includes("guanyin") || name.includes("观音")) return "GUANYIN";
+  if (lower.includes("buddha") || name.includes("佛")) return "BUDDHA";
+  if (lower.includes("bean") || name.includes("福豆")) return "FORTUNE_BEAN";
+  if (lower.includes("bangle") || name.includes("手镯")) return "BANGLE";
+  return "OTHER";
+}
+
+function slugify(input: string): string {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function parsePriceCents($: cheerio.CheerioAPI): number | null {
@@ -67,7 +93,7 @@ async function parseProduct(url: string): Promise<ParsedProduct | null> {
   const categoryTags = $(".taxonomy-product_cat a")
     .map((_, el) => $(el).text().trim().toLowerCase())
     .get();
-  const category: ProductCategory = categoryTags.some((c) => c.includes("bracelet")) ? "BANGLE" : "OTHER";
+  const category = detectCategory(name, categoryTags);
 
   const imageUrls: string[] = [];
   $(".woocommerce-product-gallery__image a").each((_, el) => {
@@ -75,13 +101,14 @@ async function parseProduct(url: string): Promise<ParsedProduct | null> {
     if (href) imageUrls.push(href);
   });
 
-  const slugMatch = url.match(/\/product\/([a-z0-9-]+)\/?$/);
-  const slug = slugMatch?.[1];
-
-  if (!sku || !slug || priceCents === null) {
-    console.warn(`Skipping ${url}: missing sku, slug, or price`);
+  if (!sku || !name || priceCents === null) {
+    console.warn(`Skipping ${url}: missing sku, name, or price`);
     return null;
   }
+
+  // Derive an ASCII-safe slug from the name + SKU (WP slugs can contain
+  // percent-encoded Chinese characters, and names collide across products).
+  const slug = `${slugify(name)}-${sku.toLowerCase()}`;
 
   return { name, sku, slug, priceCents, description, imageUrls, category };
 }
@@ -118,10 +145,18 @@ async function main() {
     const parsed = await parseProduct(url);
     if (!parsed) continue;
 
-    const uploadedUrls: string[] = [];
-    for (let i = 0; i < parsed.imageUrls.length; i++) {
-      const uploaded = await uploadImage(parsed.imageUrls[i], `${parsed.slug}-${i}`);
-      if (uploaded) uploadedUrls.push(uploaded);
+    const existing = await prisma.product.findUnique({ where: { sku: parsed.sku } });
+
+    let uploadedUrls: string[];
+    if (existing && existing.imageUrls.length > 0) {
+      uploadedUrls = existing.imageUrls;
+      console.log(`Reusing ${uploadedUrls.length} already-uploaded image(s) for ${parsed.sku}`);
+    } else {
+      uploadedUrls = [];
+      for (let i = 0; i < parsed.imageUrls.length; i++) {
+        const uploaded = await uploadImage(parsed.imageUrls[i], `${parsed.slug}-${i}`);
+        if (uploaded) uploadedUrls.push(uploaded);
+      }
     }
 
     await prisma.product.upsert({

@@ -166,7 +166,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
         />
       </label>
       <label className="flex flex-col gap-1 text-ink">
-        Price (USD)
+        Price (MYR)
         <input
           type="number"
           step="0.01"

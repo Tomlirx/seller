@@ -14,6 +14,7 @@ export default function CategoriesAdmin() {
   const [configs, setConfigs] = useState<Map<string, CategoryConfig>>(new Map());
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<string | null>(null);
+  const [uploading, setUploading] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadConfigs() {
@@ -32,21 +33,43 @@ export default function CategoriesAdmin() {
     loadConfigs();
   }, []);
 
-  const handleImageUrlChange = (category: string, newUrl: string) => {
-    const config = configs.get(category) || { id: "", category, imageUrl: null };
-    setConfigs(new Map(configs).set(category, { ...config, imageUrl: newUrl || null }));
+  const handleImageUpload = async (category: string, file: File) => {
+    setUploading(category);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Upload failed");
+      const { url } = await res.json();
+
+      // Save the uploaded URL to the category config
+      const config = configs.get(category) || { id: "", category, imageUrl: null };
+      await handleSave(category, url);
+    } catch (err) {
+      console.error(err);
+      alert("上传失败");
+    } finally {
+      setUploading(null);
+    }
   };
 
-  const handleSave = async (category: string) => {
+  const handleSave = async (category: string, imageUrl?: string | null) => {
     setSaving(category);
     try {
       const config = configs.get(category);
+      const urlToSave = imageUrl !== undefined ? imageUrl : config?.imageUrl || null;
+
       const res = await fetch("/api/admin/category-config", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           category,
-          imageUrl: config?.imageUrl || null,
+          imageUrl: urlToSave,
         }),
       });
       if (!res.ok) throw new Error("Failed to save");
@@ -102,26 +125,43 @@ export default function CategoriesAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">图片 URL</label>
+                    <label className="block text-sm font-medium mb-2">上传图片</label>
                     <input
-                      type="text"
-                      value={config?.imageUrl || ""}
-                      onChange={(e) => handleImageUrlChange(cat.value, e.target.value)}
-                      placeholder="粘贴图片 URL"
-                      className="w-full px-3 py-2 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const file = e.currentTarget.files?.[0];
+                        if (file) {
+                          handleImageUpload(cat.value, file);
+                        }
+                      }}
+                      disabled={uploading === cat.value}
+                      className="w-full px-3 py-2 border border-line rounded text-sm focus:outline-none focus:ring-2 focus:ring-gold disabled:opacity-50"
                     />
-                    <p className="text-xs text-ink-soft mt-1">
-                      或在 /admin/products 上传图片，复制 Blob URL
-                    </p>
+                    {config?.imageUrl && (
+                      <p className="text-xs text-ink-soft mt-2">
+                        ✓ 已保存
+                      </p>
+                    )}
                   </div>
 
-                  <button
-                    onClick={() => handleSave(cat.value)}
-                    disabled={saving === cat.value}
-                    className="px-4 py-2 bg-gold text-white rounded text-sm font-medium hover:bg-gold/90 disabled:opacity-50"
-                  >
-                    {saving === cat.value ? "保存中..." : "保存"}
-                  </button>
+                  {uploading !== cat.value && config?.imageUrl && (
+                    <button
+                      onClick={() => {
+                        const config = configs.get(cat.value);
+                        if (config?.imageUrl) {
+                          const newConfigs = new Map(configs);
+                          newConfigs.set(cat.value, { ...config, imageUrl: null });
+                          setConfigs(newConfigs);
+                          handleSave(cat.value, null);
+                        }
+                      }}
+                      disabled={saving === cat.value}
+                      className="px-4 py-2 bg-red-600 text-white rounded text-sm font-medium hover:bg-red-700 disabled:opacity-50"
+                    >
+                      删除图片
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

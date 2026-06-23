@@ -10,6 +10,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <Link href="/admin/orders" className="font-medium text-gold underline">
           Orders
         </Link>
+        <Link href="/admin/categories" className="font-medium text-gold underline">
+          Categories
+        </Link>
       </div>
       {children}
     </main>

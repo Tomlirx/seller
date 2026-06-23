@@ -2,29 +2,28 @@ import Link from "next/link";
 import { PRODUCT_CATEGORIES } from "@/lib/categories";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { PageContainer } from "@/components/page-container";
-import { Divider } from "@/components/divider";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-ivory-light mt-20">
-      <PageContainer className="py-16">
-        <div className="grid sm:grid-cols-4 gap-10">
+    <footer className="bg-[#111] text-white mt-20">
+      <PageContainer className="pt-24 pb-10">
+        <div className="grid sm:grid-cols-4 gap-12 pb-14 border-b border-white/10">
           <div className="flex flex-col gap-3 sm:col-span-1">
-            <p className="font-serif text-xl text-ink">岚玉</p>
+            <p className="font-serif text-2xl">岚玉</p>
             <p className="text-[10px] tracking-[0.2em] text-gold">LAN YU</p>
-            <p className="text-sm text-ink-soft leading-relaxed mt-2">
-              天然翡翠 · 精选藏品
+            <p className="text-sm text-[#9D9D9D] leading-relaxed mt-2">
+              东方玉石艺术品牌。坚持天然玉石、原创设计、匠心制作。
               <br />
               Natural jadeite, curated from a private collection.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-sm tracking-widest text-ink">品类 COLLECTIONS</p>
-            <ul className="flex flex-col gap-2 text-sm text-ink-soft">
+            <p className="text-sm tracking-widest">品类 COLLECTIONS</p>
+            <ul className="flex flex-col gap-3 text-sm text-[#B9B9B9]">
               {PRODUCT_CATEGORIES.filter((c) => c.value !== "OTHER").map((c) => (
                 <li key={c.value}>
-                  <Link href={`/collections/${c.value}`} className="hover:text-gold transition-colors">
+                  <Link href={`/collections/${c.value}`} className="hover:text-white transition-colors">
                     {c.zh} {c.en}
                   </Link>
                 </li>
@@ -33,19 +32,19 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-sm tracking-widest text-ink">支持 SUPPORT</p>
-            <ul className="flex flex-col gap-2 text-sm text-ink-soft">
+            <p className="text-sm tracking-widest">支持 SUPPORT</p>
+            <ul className="flex flex-col gap-3 text-sm text-[#B9B9B9]">
               <li>
-                <Link href="/login" className="hover:text-gold transition-colors">登录 Log in</Link>
+                <Link href="/login" className="hover:text-white transition-colors">登录 Log in</Link>
               </li>
               <li>
-                <Link href="/signup" className="hover:text-gold transition-colors">注册 Sign up</Link>
+                <Link href="/signup" className="hover:text-white transition-colors">注册 Sign up</Link>
               </li>
               <li>
-                <Link href="/orders" className="hover:text-gold transition-colors">订单 Orders</Link>
+                <Link href="/orders" className="hover:text-white transition-colors">订单 Orders</Link>
               </li>
             </ul>
-            <div className="flex gap-3 mt-2 text-ink-soft">
+            <div className="flex gap-3 mt-2 text-[#B9B9B9]">
               <span title="即将上线 Coming soon" className="cursor-default">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
                   <rect x="3" y="3" width="18" height="18" rx="4" />
@@ -61,15 +60,13 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="text-sm tracking-widest text-ink">订阅资讯 NEWSLETTER</p>
-            <p className="text-sm text-ink-soft">订阅获取新品与活动信息</p>
+            <p className="text-sm tracking-widest">订阅资讯 NEWSLETTER</p>
+            <p className="text-sm text-[#9D9D9D]">订阅获取新品与活动信息</p>
             <NewsletterForm />
           </div>
         </div>
 
-        <Divider className="my-10" />
-
-        <p className="text-center text-[11px] tracking-widest text-ink-soft">
+        <p className="text-center text-[14px] text-[#7D7D7D] pt-10">
           © {new Date().getFullYear()} 岚玉 LAN YU. ALL RIGHTS RESERVED.
         </p>
       </PageContainer>

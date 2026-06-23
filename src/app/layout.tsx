@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Serif_SC, Noto_Sans_SC, Cormorant_Garamond } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_SC, Noto_Sans_SC, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { MobileBottomNav } from "@/components/mobile-bottom-nav";
+import { BackToTop } from "@/components/back-to-top";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +29,9 @@ const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  weight: ["400", "500", "600", "700"],
+const inter = Inter({
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
 });
 
@@ -47,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="zh"
-      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} ${notoSansSC.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifSC.variable} ${notoSansSC.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ivory text-ink font-sans pb-16 sm:pb-0">
         <Providers>
@@ -55,6 +56,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <MobileBottomNav />
+          <BackToTop />
         </Providers>
       </body>
     </html>

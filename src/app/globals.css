@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --ivory: #f6f1ea;
-  --ivory-light: #fcfaf7;
-  --ink: #2c2b29;
-  --ink-soft: #756b61;
-  --gold: #a58a56;
-  --gold-soft: #bfa476;
+  --ivory: #f8f4ee;
+  --ivory-light: #faf8f5;
+  --ink: #6d5846;
+  --ink-soft: #8a7a69;
+  --gold: #b48a57;
+  --gold-soft: #c9a479;
   --jade: #a7c8b5;
   --jade-deep: #7fa690;
-  --line: #ddd3c8;
+  --line: #e6ddd3;
 }
 
 @theme inline {
@@ -24,9 +24,8 @@
   --color-line: var(--line);
   --color-background: var(--ivory);
   --color-foreground: var(--ink);
-  --font-sans: var(--font-geist-sans), var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-sans: var(--font-inter), var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-serif: var(--font-noto-serif-sc), "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
-  --font-heading-en: var(--font-cormorant), Georgia, serif;
 }
 
 body {

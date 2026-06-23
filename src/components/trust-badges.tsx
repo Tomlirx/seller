@@ -13,20 +13,22 @@ const ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-const BADGES = [
+export type TrustBadge = { icon: keyof typeof ICONS; zh: string; en: string };
+
+export const DEFAULT_TRUST_BADGES: TrustBadge[] = [
   { icon: "mountain", zh: "天然翡翠", en: "NATURAL JADE" },
   { icon: "shield", zh: "严选品质", en: "QUALITY" },
   { icon: "leaf", zh: "匠心甄选", en: "CURATED" },
   { icon: "heart", zh: "结缘有缘人", en: "MEANINGFUL" },
-] as const;
+];
 
-export function TrustBadges() {
+export function TrustBadges({ items = DEFAULT_TRUST_BADGES }: { items?: TrustBadge[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-      {BADGES.map((badge) => (
+    <div className={`grid grid-cols-2 gap-6 text-center ${items.length >= 4 ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
+      {items.map((badge) => (
         <div key={badge.icon} className="flex flex-col items-center gap-2">
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 text-gold">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2} className="h-6 w-6">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
               {ICONS[badge.icon]}
             </svg>
           </span>

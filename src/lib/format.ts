@@ -1,5 +1,5 @@
 export function formatPrice(cents: number) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
+  return new Intl.NumberFormat("ms-MY", { style: "currency", currency: "MYR" }).format(
     cents / 100
   );
 }

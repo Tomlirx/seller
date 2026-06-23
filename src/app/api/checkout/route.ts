@@ -68,12 +68,12 @@ export async function POST(req: Request) {
     line_items: lineItems.map((i) => ({
       quantity: i.quantity,
       price_data: {
-        currency: "usd",
+        currency: "myr",
         unit_amount: i.product.priceCents,
         product_data: { name: i.product.name },
       },
     })),
-    shipping_address_collection: { allowed_countries: ["US", "CA"] },
+    shipping_address_collection: { allowed_countries: ["MY"] },
     success_url: `${origin}/checkout/success?orderId=${order.id}`,
     cancel_url: `${origin}/cart`,
     client_reference_id: order.id,

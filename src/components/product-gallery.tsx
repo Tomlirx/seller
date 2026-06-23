@@ -8,18 +8,9 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
   const current = images[active];
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="aspect-square bg-ivory-light border border-line rounded overflow-hidden relative">
-        {current ? (
-          <Image src={current} alt={alt} fill className="object-cover" />
-        ) : (
-          <div className="h-full w-full flex items-center justify-center text-ink-soft text-sm">
-            No image
-          </div>
-        )}
-      </div>
+    <div className="flex flex-col sm:flex-row gap-3">
       {images.length > 1 && (
-        <div className="flex gap-2">
+        <div className="flex sm:flex-col gap-2 order-2 sm:order-1">
           {images.map((url, index) => (
             <button
               key={url}
@@ -34,6 +25,15 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
           ))}
         </div>
       )}
+      <div className="aspect-square flex-1 bg-ivory-light border border-line rounded overflow-hidden relative order-1 sm:order-2">
+        {current ? (
+          <Image src={current} alt={alt} fill className="object-cover" />
+        ) : (
+          <div className="h-full w-full flex items-center justify-center text-ink-soft text-sm">
+            No image
+          </div>
+        )}
+      </div>
     </div>
   );
 }

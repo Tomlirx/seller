@@ -112,9 +112,11 @@ export default async function Home() {
 
       {/* Intro banner */}
       <FadeInSection>
-        <section className="relative w-full h-[40vh] sm:h-[55vh]">
-          <Image src="/marketing/lanyu-hero.jpg" alt="LAN YU" fill className="object-cover" />
-        </section>
+        <Link href="/collections/BANGLE">
+          <section className="relative w-full h-[40vh] sm:h-[55vh] cursor-pointer group overflow-hidden">
+            <Image src="/marketing/lanyu-bangle-banner.png" alt="手镯 Bangle Collection" fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+          </section>
+        </Link>
       </FadeInSection>
 
       {/* Collection grid */}

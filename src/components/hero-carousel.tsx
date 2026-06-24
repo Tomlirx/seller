@@ -27,7 +27,7 @@ const SLIDES: Slide[] = [
     theme: "dark",
   },
   {
-    image: "/marketing/lanyu-pendant-rock-alt.png",
+    image: "/marketing/lanyu-buddha.png",
     eyebrow: "匠心雕琢 · 方得圆满",
     title: ["玉不琢", "不成器"],
     subtitle: "每一件岚玉，皆经匠心雕琢而成，传承千年东方工艺。",

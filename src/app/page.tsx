@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 const INSTAGRAM_IMAGES = [
   "/marketing/lanyu-pendant-rock.png",
   "/marketing/lanyu-guanyin.jpg",
-  "/marketing/lanyu-pendant-rock-alt.png",
+  "/marketing/lanyu-buddha.png",
   "/marketing/lanyu-story.jpg",
   "/marketing/lanyu-moongate.png",
 ];
@@ -208,7 +208,7 @@ export default async function Home() {
       <FadeInSection>
         <section className="bg-white">
           <div className="relative w-full h-[45vh] sm:h-[60vh]">
-            <Image src="/marketing/lanyu-pendant-rock-alt.png" alt="一块玉，一段故事" fill className="object-cover" />
+            <Image src="/marketing/lanyu-buddha.png" alt="一块玉，一段故事" fill className="object-cover" />
           </div>
           <div className="bg-[#FBF8F4] py-24 sm:py-36">
             <PageContainer>

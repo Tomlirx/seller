@@ -150,12 +150,15 @@ export default async function Home() {
                   <Link key={product.id} href={`/products/${product.slug}`} className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
                     <div className="relative aspect-square bg-[#F8F5F0] p-8 sm:p-10 overflow-hidden">
                       {product.imageUrls[0] ? (
-                        <Image
-                          src={product.imageUrls[0]}
-                          alt={product.name}
-                          fill
-                          className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.08]"
-                        />
+                        <>
+                          <Image
+                            src={product.imageUrls[0]}
+                            alt={product.name}
+                            fill
+                            className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.08]"
+                          />
+                          <span className="absolute top-2 left-2 z-10 bg-ink/80 text-ivory-light text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                        </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center text-ink-soft text-xs">No image</div>
                       )}

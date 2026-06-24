@@ -194,7 +194,10 @@ export default async function Home() {
                 <div className="grid grid-cols-2 grid-rows-2 gap-5 h-[420px] sm:h-[480px]">
                   <Link href={`/products/${heroProduct.slug}`} className="group row-span-2 relative overflow-hidden">
                     {heroProduct.imageUrls[0] ? (
-                      <Image src={heroProduct.imageUrls[0]} alt={heroProduct.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                      <>
+                        <Image src={heroProduct.imageUrls[0]} alt={heroProduct.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                        <span className="absolute top-3 left-3 z-10 bg-ink/80 text-ivory-light text-[10px] tracking-[0.1em] px-2.5 py-1">实物原图</span>
+                      </>
                     ) : (
                       <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-sm">No image</div>
                     )}
@@ -202,7 +205,10 @@ export default async function Home() {
                   {gridProducts.slice(0, 2).map((product) => (
                     <Link key={product.id} href={`/products/${product.slug}`} className="group relative overflow-hidden">
                       {product.imageUrls[0] ? (
-                        <Image src={product.imageUrls[0]} alt={product.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                        <>
+                          <Image src={product.imageUrls[0]} alt={product.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                          <span className="absolute top-2 left-2 z-10 bg-ink/80 text-ivory-light text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                        </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-xs">No image</div>
                       )}

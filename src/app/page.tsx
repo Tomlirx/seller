@@ -209,12 +209,20 @@ export default async function Home() {
         <section className="bg-white">
           <div className="relative w-full h-[45vh] sm:h-[60vh]">
             <Image src="/marketing/lanyu-buddha.png" alt="一块玉，一段故事" fill className="object-cover" />
+            <div className="absolute inset-0 flex items-center pl-[7vw] pr-10">
+              <div className="max-w-[420px]">
+                <p className="text-xs tracking-[0.3em] text-[#A08E7A] mb-4 sm:mb-6">EDITORIAL</p>
+                <h2 className="font-serif text-2xl sm:text-4xl text-ink leading-[1.35]">
+                  一块玉，
+                  <br />
+                  一段故事。
+                </h2>
+              </div>
+            </div>
           </div>
           <div className="bg-[#FBF8F4] py-24 sm:py-36">
             <PageContainer>
               <div className="max-w-[640px] mx-auto text-center">
-                <p className="text-xs tracking-[0.3em] text-[#A58B74] mb-6">EDITORIAL</p>
-                <h2 className="font-serif text-3xl sm:text-[2.6rem] text-ink leading-[1.35] mb-7">一块玉，一段故事。</h2>
                 <p className="text-ink-soft leading-[2.1]">
                   从矿脉到匠人工作室，从设计草图到最终成品，岚玉坚持每一件作品都拥有完整的创作轨迹。真正值得珍藏的，不仅是玉石，更是其中承载的时间。
                 </p>

@@ -34,7 +34,6 @@ const SLIDES: Slide[] = [
     ctaText: "查看佛公系列",
     ctaHref: "/collections/BUDDHA",
     theme: "dark",
-    hasBakedText: true,
   },
   {
     image: "/marketing/lanyu-guanyin.jpg",

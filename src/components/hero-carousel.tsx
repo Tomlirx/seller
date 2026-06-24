@@ -44,17 +44,15 @@ const SLIDES: Slide[] = [
     ctaText: "查看观音系列",
     ctaHref: "/collections/GUANYIN",
     theme: "dark",
-    hasBakedText: true,
   },
   {
     image: "/marketing/lanyu-story.jpg",
     eyebrow: "从珍藏到分享",
     title: ["每一块玉石", "都有它的缘分"],
     subtitle: "希望每一块玉石，都能遇见属于自己的珍惜之人。",
-    ctaText: "阅读品牌故事",
-    ctaHref: "/collections",
+    ctaText: "查看更多藏品",
+    ctaHref: "/collections/OTHER",
     theme: "dark",
-    hasBakedText: true,
   },
 ];
 

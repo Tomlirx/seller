@@ -14,6 +14,7 @@ type ProductFormValues = {
   imageUrls: string[];
   stockQty: number;
   isActive: boolean;
+  isFeatured: boolean;
 };
 
 export function ProductForm({ initial }: { initial?: ProductFormValues }) {
@@ -26,6 +27,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
   const [imageUrls, setImageUrls] = useState<string[]>(initial?.imageUrls ?? []);
   const [stockQty, setStockQty] = useState(initial?.stockQty?.toString() ?? "0");
   const [isActive, setIsActive] = useState(initial?.isActive ?? true);
+  const [isFeatured, setIsFeatured] = useState(initial?.isFeatured ?? false);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -83,6 +85,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
       imageUrls,
       stockQty: parseInt(stockQty, 10),
       isActive,
+      isFeatured,
     };
 
     const res = await fetch(
@@ -238,6 +241,14 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           onChange={(e) => setIsActive(e.target.checked)}
         />
         Active (visible in storefront)
+      </label>
+      <label className="flex items-center gap-2 text-ink">
+        <input
+          type="checkbox"
+          checked={isFeatured}
+          onChange={(e) => setIsFeatured(e.target.checked)}
+        />
+        Featured on homepage (甄选珍品)
       </label>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <div className="flex items-center gap-3">

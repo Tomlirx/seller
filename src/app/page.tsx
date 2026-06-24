@@ -69,7 +69,18 @@ export default async function Home() {
   });
   const collectionProducts = featured.slice(0, 5);
   const remaining = featured.slice(5).length >= 3 ? featured.slice(5) : featured.slice(0, 3);
-  const [heroProduct, ...gridProducts] = remaining;
+
+  const manualFeatured = await prisma.product.findMany({
+    where: { isActive: true, isFeatured: true },
+    orderBy: { updatedAt: "desc" },
+    take: 3,
+  });
+  const manualFeaturedIds = new Set(manualFeatured.map((p) => p.id));
+  const featuredSelection =
+    manualFeatured.length >= 3
+      ? manualFeatured
+      : [...manualFeatured, ...remaining.filter((p) => !manualFeaturedIds.has(p.id))].slice(0, 3);
+  const [heroProduct, ...gridProducts] = featuredSelection;
 
   return (
     <main className="flex-1">

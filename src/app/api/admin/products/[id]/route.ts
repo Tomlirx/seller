@@ -12,6 +12,7 @@ const productSchema = z.object({
   imageUrls: z.array(z.string().url()),
   stockQty: z.number().int().nonnegative(),
   isActive: z.boolean(),
+  isFeatured: z.boolean().optional(),
 });
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {

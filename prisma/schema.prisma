@@ -49,6 +49,7 @@ model Product {
   imageUrls   String[]        @default([])
   stockQty    Int         @default(0)
   isActive    Boolean     @default(true)
+  isFeatured  Boolean     @default(false)
   orderItems  OrderItem[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt

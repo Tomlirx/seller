@@ -1,0 +1,2773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>岚玉 LAN YU</title>
+
+<meta name="description"
+content="LAN YU 东方玉石珠宝">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<style>
+
+/*************************************************
+
+LAN YU OFFICIAL WEBSITE
+
+Version 1.0
+
+Homepage
+
+Responsive
+
+Desktop / Tablet / Mobile
+
+**************************************************/
+
+:root{
+
+--background:#F8F4EE;
+
+--white:#ffffff;
+
+--primary:#6D5846;
+
+--secondary:#8A7A69;
+
+--gold:#B48A57;
+
+--line:#E6DDD3;
+
+--light:#FAF8F5;
+
+--transition:.35s;
+
+--container:1520px;
+
+}
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:var(--background);
+
+font-family:"Inter",sans-serif;
+
+color:var(--primary);
+
+overflow-x:hidden;
+
+}
+
+img{
+
+display:block;
+
+width:100%;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+ul{
+
+list-style:none;
+
+}
+
+button{
+
+font-family:inherit;
+
+cursor:pointer;
+
+}
+
+.container{
+
+width:min(var(--container),92%);
+
+margin:auto;
+
+}
+
+/***************************
+
+Header
+
+***************************/
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:86px;
+
+background:rgba(248,244,238,.92);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+transition:.35s;
+
+border-bottom:1px solid rgba(0,0,0,.04);
+
+}
+
+header.scrolled{
+
+height:72px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+}
+
+.nav{
+
+width:min(1600px,94%);
+
+margin:auto;
+
+height:100%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+font-family:"Noto Serif SC",serif;
+
+}
+
+.logo h1{
+
+font-size:30px;
+
+font-weight:300;
+
+letter-spacing:8px;
+
+color:var(--primary);
+
+}
+
+.logo span{
+
+display:block;
+
+font-size:11px;
+
+letter-spacing:5px;
+
+margin-top:4px;
+
+color:#9D8E7F;
+
+}
+
+.menu{
+
+display:flex;
+
+gap:56px;
+
+}
+
+.menu a{
+
+font-size:15px;
+
+position:relative;
+
+transition:var(--transition);
+
+}
+
+.menu a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-10px;
+
+height:1px;
+
+width:0;
+
+background:var(--gold);
+
+transition:.35s;
+
+}
+
+.menu a:hover{
+
+color:var(--gold);
+
+}
+
+.menu a:hover::after{
+
+width:100%;
+
+}
+
+.actions{
+
+display:flex;
+
+align-items:center;
+
+gap:22px;
+
+}
+
+.actions svg{
+
+width:22px;
+
+height:22px;
+
+stroke:#76675A;
+
+fill:none;
+
+stroke-width:1.5;
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.actions svg:hover{
+
+stroke:var(--gold);
+
+transform:translateY(-2px);
+
+}
+
+/***************************
+
+Hero
+
+***************************/
+
+.hero{
+
+padding-top:86px;
+
+height:100vh;
+
+min-height:980px;
+
+display:grid;
+
+grid-template-columns:42% 58%;
+
+background:var(--background);
+
+}
+
+.hero-left{
+
+display:flex;
+
+align-items:center;
+
+padding-left:7vw;
+
+}
+
+.hero-content{
+
+max-width:520px;
+
+}
+
+.hero-content small{
+
+display:block;
+
+font-family:"Noto Serif SC",serif;
+
+letter-spacing:4px;
+
+font-size:14px;
+
+color:#A08E7A;
+
+margin-bottom:28px;
+
+}
+
+.hero-content h2{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:76px;
+
+font-weight:300;
+
+line-height:1.22;
+
+margin-bottom:34px;
+
+color:var(--primary);
+
+}
+
+.hero-content p{
+
+font-size:17px;
+
+line-height:2;
+
+color:var(--secondary);
+
+margin-bottom:46px;
+
+}
+
+.hero-button{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:18px 36px;
+
+border:1px solid #D8C7B5;
+
+color:var(--gold);
+
+transition:.35s;
+
+}
+
+.hero-button:hover{
+
+background:var(--gold);
+
+color:white;
+
+}
+
+.hero-right{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.hero-right img{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:8s;
+
+}
+
+.hero:hover img{
+
+transform:scale(1.05);
+
+}
+
+.hero-number{
+
+position:absolute;
+
+right:60px;
+
+bottom:70px;
+
+font-family:"Noto Serif SC",serif;
+
+font-size:46px;
+
+color:var(--gold);
+
+opacity:.8;
+
+}
+
+/* ====== Part 1 End ====== */
+/* ===========================
+PART 2
+Header + Hero + Brand Story
+=========================== */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===========================
+HEADER
+=========================== -->
+
+<header id="header">
+
+    <div class="nav">
+
+        <a href="#" class="logo">
+
+            <h1>岚玉</h1>
+
+            <span>LAN YU</span>
+
+        </a>
+
+        <nav class="menu">
+
+            <a href="#">首页</a>
+
+            <a href="#">系列</a>
+
+            <a href="#">玉石珍藏</a>
+
+            <a href="#">品牌故事</a>
+
+            <a href="#">匠心工艺</a>
+
+            <a href="#">联系我们</a>
+
+        </nav>
+
+        <div class="actions">
+
+            <!-- Search -->
+
+            <svg viewBox="0 0 24 24">
+
+                <circle cx="11" cy="11" r="7"></circle>
+
+                <line x1="16.5" y1="16.5" x2="22" y2="22"></line>
+
+            </svg>
+
+            <!-- User -->
+
+            <svg viewBox="0 0 24 24">
+
+                <circle cx="12" cy="8" r="4"></circle>
+
+                <path d="M4 22c0-4 3-7 8-7s8 3 8 7"/>
+
+            </svg>
+
+            <!-- Cart -->
+
+            <svg viewBox="0 0 24 24">
+
+                <circle cx="9" cy="20" r="1"></circle>
+
+                <circle cx="18" cy="20" r="1"></circle>
+
+                <path d="M2 3h3l2.2 11h11l2-8H6"></path>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ===========================
+HERO
+=========================== -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <div class="hero-content">
+
+            <small>
+                LAN YU · 东方玉石艺术
+            </small>
+
+            <h2>
+
+                Every Jade<br>
+
+                Has Its Own Destiny
+
+            </h2>
+
+            <p>
+
+                每一块玉石都有自己的生命轨迹。
+
+                岚玉坚持天然玉石甄选，
+
+                将东方审美与现代设计融合，
+
+                创造值得世代珍藏的艺术珠宝。
+
+            </p>
+
+            <a class="hero-button" href="#collection">
+
+                探索系列 →
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <!-- 请替换成设计稿主视觉 -->
+
+        <img src="images/hero.jpg">
+
+        <div class="hero-number">
+
+            01
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+BRAND STORY
+=========================== -->
+
+<section class="brand">
+
+<div class="container">
+
+<div class="brand-grid">
+
+<div class="brand-text">
+
+<div class="section-title">
+
+<small>
+
+BRAND PHILOSOPHY
+
+</small>
+
+<h2>
+
+东方玉石美学
+
+</h2>
+
+<p>
+
+岚玉相信，
+
+真正值得珍藏的作品，
+
+不仅来自天然玉石，
+
+更来自时间、文化与匠人的温度。
+
+我们希望每一件作品，
+
+都能成为佩戴者生命故事的一部分。
+
+</p>
+
+</div>
+
+<a href="#">
+
+了解品牌 →
+
+</a>
+
+</div>
+
+<div class="brand-image">
+
+<img src="images/brand-story.jpg">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+INTRO BANNER
+与设计稿一致的大图
+=========================== -->
+
+<section class="intro-banner">
+
+<img
+
+src="images/intro-banner.jpg"
+
+alt="LAN YU">
+
+</section>
+
+<style>
+
+.intro-banner{
+
+padding:0;
+
+background:#F8F4EE;
+
+}
+
+.intro-banner img{
+
+width:100%;
+
+display:block;
+
+}
+
+/************************/
+
+.brand{
+
+padding:140px 0;
+
+background:#FAF8F4;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.brand::before{
+
+content:"";
+
+position:absolute;
+
+right:-8%;
+
+top:-5%;
+
+width:60%;
+
+height:120%;
+
+background:url(images/ink-texture.png);
+
+background-size:cover;
+
+opacity:.08;
+
+pointer-events:none;
+
+}
+
+.brand-grid{
+
+display:grid;
+
+grid-template-columns:44% 56%;
+
+align-items:center;
+
+gap:90px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.brand-image{
+
+overflow:hidden;
+
+}
+
+.brand-image img{
+
+transition:1s;
+
+}
+
+.brand-image:hover img{
+
+transform:scale(1.04);
+
+}
+
+.brand-text a{
+
+display:inline-flex;
+
+margin-top:40px;
+
+font-size:15px;
+
+color:var(--gold);
+
+transition:.35s;
+
+}
+
+.brand-text a:hover{
+
+transform:translateX(10px);
+
+}
+
+</style>
+
+<!-- ===========================
+下一部分：
+
+Part 3
+
+将开始：
+
+✓ Collection Section（五列商品）
+✓ Featured Collection
+✓ Full Width Gallery
+✓ 与设计稿一致的大留白布局
+=========================== -->
+
+<!-- =====================================================
+PART 3
+Collection / Featured Collection / Editorial Gallery
+===================================================== -->
+
+<!-- ===========================
+COLLECTION
+=========================== -->
+
+<section
+id="collection"
+class="collection">
+
+<div class="container">
+
+<div class="collection-head">
+
+<div class="section-title">
+
+<small>
+
+COLLECTION
+
+</small>
+
+<h2>
+
+精选系列
+
+</h2>
+
+<p>
+
+以天然翡翠、和田玉及东方珠宝为灵感，
+探索岚玉当代东方设计语言。
+
+</p>
+
+</div>
+
+<a href="#">
+
+查看全部 →
+
+</a>
+
+</div>
+
+<div class="collection-grid">
+
+<!-- Product 1 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="images/product-01.png"
+alt="">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+
+清风 Jade Pendant
+
+</h3>
+
+<p>
+
+Natural Jade
+
+</p>
+
+</div>
+
+</article>
+
+<!-- Product 2 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="images/product-02.png"
+alt="">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+
+流云 Necklace
+
+</h3>
+
+<p>
+
+Hetian Jade
+
+</p>
+
+</div>
+
+</article>
+
+<!-- Product 3 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="images/product-03.png"
+alt="">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+
+云岚 Pendant
+
+</h3>
+
+<p>
+
+Imperial Jade
+
+</p>
+
+</div>
+
+</article>
+
+<!-- Product 4 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="images/product-04.png"
+alt="">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+
+若水 Collection
+
+</h3>
+
+<p>
+
+Hand Crafted
+
+</p>
+
+</div>
+
+</article>
+
+<!-- Product 5 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="images/product-05.png"
+alt="">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+
+山月 Jade
+
+</h3>
+
+<p>
+
+Collector Edition
+
+</p>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+FEATURE COLLECTION
+=========================== -->
+
+<section
+class="featured">
+
+<div class="container">
+
+<div class="featured-grid">
+
+<div>
+
+<div class="section-title">
+
+<small>
+
+FEATURED
+
+</small>
+
+<h2>
+
+甄选珍品
+
+</h2>
+
+<p>
+
+甄选代表岚玉品牌精神的收藏级作品，
+让天然玉石在现代设计中焕发新的生命。
+
+</p>
+
+</div>
+
+<a
+class="hero-button"
+href="#">
+
+立即探索
+
+</a>
+
+</div>
+
+<div class="feature-gallery">
+
+<div class="large">
+
+<img
+src="images/gallery-01.jpg">
+
+</div>
+
+<div>
+
+<img
+src="images/gallery-02.jpg">
+
+</div>
+
+<div>
+
+<img
+src="images/gallery-03.jpg">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+EDITORIAL IMAGE
+=========================== -->
+
+<section
+class="editorial">
+
+<div class="editorial-image">
+
+<img
+src="images/editorial.jpg">
+
+</div>
+
+<div
+class="editorial-content">
+
+<div class="container">
+
+<div class="editorial-copy">
+
+<small>
+
+EDITORIAL
+
+</small>
+
+<h2>
+
+一块玉，
+
+一段故事。
+
+</h2>
+
+<p>
+
+从矿脉到匠人工作室，
+
+从设计草图到最终成品，
+
+岚玉坚持每一件作品都拥有完整的创作轨迹。
+
+真正值得珍藏的，
+
+不仅是玉石，
+
+更是其中承载的时间。
+
+</p>
+
+<a href="#">
+
+阅读更多 →
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+/* ==================================
+Collection
+================================== */
+
+.collection{
+
+padding:150px 0;
+
+background:#ffffff;
+
+}
+
+.collection-head{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-end;
+
+margin-bottom:70px;
+
+}
+
+.collection-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:28px;
+
+}
+
+.product{
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.product:hover{
+
+transform:translateY(-12px);
+
+}
+
+.product-image{
+
+background:#F8F5F0;
+
+padding:45px;
+
+overflow:hidden;
+
+}
+
+.product-image img{
+
+transition:.6s;
+
+}
+
+.product:hover img{
+
+transform:scale(1.08);
+
+}
+
+.product-info{
+
+padding-top:26px;
+
+text-align:center;
+
+}
+
+.product-info h3{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:24px;
+
+font-weight:400;
+
+margin-bottom:10px;
+
+color:var(--primary);
+
+}
+
+.product-info p{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+color:#998E84;
+
+}
+
+/* ==================================
+Featured
+================================== */
+
+.featured{
+
+padding:160px 0;
+
+background:#F7F3ED;
+
+}
+
+.featured-grid{
+
+display:grid;
+
+grid-template-columns:38% 62%;
+
+gap:80px;
+
+align-items:center;
+
+}
+
+.feature-gallery{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+grid-template-rows:1fr 1fr;
+
+gap:20px;
+
+}
+
+.feature-gallery .large{
+
+grid-row:1 / span 2;
+
+overflow:hidden;
+
+}
+
+.feature-gallery div{
+
+overflow:hidden;
+
+}
+
+.feature-gallery img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:1s;
+
+}
+
+.feature-gallery div:hover img{
+
+transform:scale(1.06);
+
+}
+
+/* ==================================
+Editorial
+================================== */
+
+.editorial{
+
+padding:0;
+
+background:#fff;
+
+}
+
+.editorial-image img{
+
+width:100%;
+
+display:block;
+
+}
+
+.editorial-content{
+
+padding:140px 0;
+
+background:#FBF8F4;
+
+}
+
+.editorial-copy{
+
+max-width:640px;
+
+margin:auto;
+
+text-align:center;
+
+}
+
+.editorial-copy small{
+
+letter-spacing:4px;
+
+color:#A58B74;
+
+display:block;
+
+margin-bottom:24px;
+
+}
+
+.editorial-copy h2{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:58px;
+
+font-weight:300;
+
+line-height:1.35;
+
+margin-bottom:30px;
+
+color:var(--primary);
+
+}
+
+.editorial-copy p{
+
+font-size:17px;
+
+line-height:2.1;
+
+color:var(--secondary);
+
+margin-bottom:40px;
+
+}
+
+.editorial-copy a{
+
+color:var(--gold);
+
+font-size:15px;
+
+transition:.35s;
+
+}
+
+.editorial-copy a:hover{
+
+letter-spacing:1px;
+
+}
+
+/* ==================================
+Responsive
+================================== */
+
+@media(max-width:1200px){
+
+.collection-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.featured-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.collection-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.editorial-copy h2{
+
+font-size:40px;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+PART 4 将继续输出：
+
+✓ 四大品牌优势（Icons）
+✓ 匠心工艺 Video Banner
+✓ Customer Story
+✓ 大图展示
+（与设计稿对应的中下部分）
+===================================================== -->
+<!-- =====================================================
+PART 4
+USP / Craftsmanship / Customer Story
+===================================================== -->
+
+<!-- ===========================
+USP
+=========================== -->
+
+<section class="usp">
+
+<div class="container">
+
+<div class="section-title" style="text-align:center;">
+
+<small>
+
+WHY LAN YU
+
+</small>
+
+<h2>
+
+东方美学 · 匠心传承
+
+</h2>
+
+<p style="margin:auto;">
+
+每一件作品，都坚持天然玉石、原创设计、
+手工雕刻与终身养护。
+
+</p>
+
+</div>
+
+<div class="usp-grid">
+
+<div class="usp-item">
+
+<div class="usp-icon">
+
+<img src="images/icon-natural.svg">
+
+</div>
+
+<h3>
+
+天然玉石
+
+</h3>
+
+<p>
+
+坚持天然A货玉石，
+每件均经过严格甄选。
+
+</p>
+
+</div>
+
+<div class="usp-item">
+
+<div class="usp-icon">
+
+<img src="images/icon-design.svg">
+
+</div>
+
+<h3>
+
+原创设计
+
+</h3>
+
+<p>
+
+融合东方文化与现代设计语言，
+打造经典作品。
+
+</p>
+
+</div>
+
+<div class="usp-item">
+
+<div class="usp-icon">
+
+<img src="images/icon-craft.svg">
+
+</div>
+
+<h3>
+
+匠心工艺
+
+</h3>
+
+<p>
+
+多年玉雕师手工制作，
+每件作品独一无二。
+
+</p>
+
+</div>
+
+<div class="usp-item">
+
+<div class="usp-icon">
+
+<img src="images/icon-service.svg">
+
+</div>
+
+<h3>
+
+终身养护
+
+</h3>
+
+<p>
+
+提供保养、清洁、
+收藏咨询服务。
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+CRAFT
+=========================== -->
+
+<section class="craft">
+
+<div class="container">
+
+<div class="craft-wrapper">
+
+<div class="craft-video">
+
+<img src="images/craft-video.jpg">
+
+<div class="play-button"></div>
+
+</div>
+
+<div class="craft-copy">
+
+<small>
+
+CRAFTSMANSHIP
+
+</small>
+
+<h2>
+
+一件作品，
+
+需要经历数十道工序。
+
+</h2>
+
+<p>
+
+从原石挑选、
+设计绘图、
+玉雕、
+抛光、
+镶嵌，
+直到最终检验。
+
+每一步都由经验丰富的工匠完成。
+
+</p>
+
+<a href="#">
+
+观看纪录片 →
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+STORY
+=========================== -->
+
+<section class="story">
+
+<div class="container">
+
+<div class="story-grid">
+
+<div class="story-image">
+
+<img src="images/story.jpg">
+
+</div>
+
+<div class="story-content">
+
+<small>
+
+CUSTOMER STORY
+
+</small>
+
+<blockquote>
+
+" 我收藏的不只是玉，
+而是一段值得纪念的人生。 "
+
+</blockquote>
+
+<p>
+
+收到作品那一刻，
+
+真正打动我的，
+
+不是它的价值，
+
+而是那种温润与安静。
+
+</p>
+
+<p>
+
+它陪伴我完成了人生中很多重要时刻。
+
+</p>
+
+<div class="story-author">
+
+—— LAN YU Collector
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+FULL WIDTH IMAGE
+=========================== -->
+
+<section class="full-banner">
+
+<img src="images/banner-02.jpg">
+
+</section>
+
+<style>
+
+/* ======================================
+USP
+====================================== */
+
+.usp{
+
+padding:160px 0;
+
+background:white;
+
+}
+
+.usp-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:40px;
+
+margin-top:80px;
+
+}
+
+.usp-item{
+
+text-align:center;
+
+padding:40px 24px;
+
+transition:.35s;
+
+}
+
+.usp-item:hover{
+
+transform:translateY(-10px);
+
+}
+
+.usp-icon{
+
+width:88px;
+
+height:88px;
+
+margin:auto;
+
+margin-bottom:28px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border:1px solid #E4D8CB;
+
+border-radius:50%;
+
+}
+
+.usp-icon img{
+
+width:40px;
+
+}
+
+.usp-item h3{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:24px;
+
+font-weight:400;
+
+margin-bottom:18px;
+
+}
+
+.usp-item p{
+
+line-height:2;
+
+font-size:15px;
+
+color:#8E847B;
+
+}
+
+/* ======================================
+CRAFT
+====================================== */
+
+.craft{
+
+padding:170px 0;
+
+background:#F7F3ED;
+
+}
+
+.craft-wrapper{
+
+display:grid;
+
+grid-template-columns:58% 42%;
+
+gap:80px;
+
+align-items:center;
+
+}
+
+.craft-video{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.craft-video img{
+
+transition:1s;
+
+}
+
+.craft-video:hover img{
+
+transform:scale(1.05);
+
+}
+
+.play-button{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:white;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.play-button::before{
+
+content:"";
+
+position:absolute;
+
+left:36px;
+
+top:28px;
+
+border-left:24px solid #B48A57;
+
+border-top:16px solid transparent;
+
+border-bottom:16px solid transparent;
+
+}
+
+.play-button:hover{
+
+transform:translate(-50%,-50%) scale(1.08);
+
+}
+
+.craft-copy small{
+
+letter-spacing:4px;
+
+color:#A28E79;
+
+display:block;
+
+margin-bottom:26px;
+
+}
+
+.craft-copy h2{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:56px;
+
+font-weight:300;
+
+line-height:1.4;
+
+margin-bottom:32px;
+
+}
+
+.craft-copy p{
+
+font-size:17px;
+
+line-height:2;
+
+color:#8D837A;
+
+margin-bottom:40px;
+
+}
+
+.craft-copy a{
+
+color:var(--gold);
+
+}
+
+/* ======================================
+Story
+====================================== */
+
+.story{
+
+padding:170px 0;
+
+background:white;
+
+}
+
+.story-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:80px;
+
+align-items:center;
+
+}
+
+.story-image{
+
+overflow:hidden;
+
+}
+
+.story-image img{
+
+transition:1s;
+
+}
+
+.story-image:hover img{
+
+transform:scale(1.05);
+
+}
+
+.story-content small{
+
+letter-spacing:4px;
+
+display:block;
+
+margin-bottom:20px;
+
+color:#A08D78;
+
+}
+
+.story-content blockquote{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:42px;
+
+font-weight:300;
+
+line-height:1.8;
+
+margin-bottom:34px;
+
+color:var(--primary);
+
+}
+
+.story-content p{
+
+font-size:17px;
+
+line-height:2;
+
+margin-bottom:18px;
+
+color:#8B8178;
+
+}
+
+.story-author{
+
+margin-top:30px;
+
+color:var(--gold);
+
+font-weight:600;
+
+letter-spacing:2px;
+
+}
+
+/* ======================================
+Banner
+====================================== */
+
+.full-banner{
+
+padding:0;
+
+}
+
+.full-banner img{
+
+display:block;
+
+width:100%;
+
+}
+
+/* ======================================
+Responsive
+====================================== */
+
+@media(max-width:1200px){
+
+.usp-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.craft-wrapper,
+
+.story-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.usp-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.craft-copy h2,
+
+.story-content blockquote{
+
+font-size:36px;
+
+}
+
+}
+
+</style>
+
+<!-- =====================================================
+PART 5（最后一部分）：
+
+✓ Instagram Gallery
+✓ Newsletter
+✓ Footer
+✓ Mobile Menu
+✓ JavaScript
+✓ Scroll Animation
+✓ Sticky Header
+✓ Image Reveal
+✓ Back To Top
+✓ </body>
+✓ </html>
+
+至此整个 index.html 完整结束。
+===================================================== -->
+<!-- =====================================================
+PART 5
+Instagram / Newsletter / Footer / JS
+===================================================== -->
+
+<!-- ===========================
+Instagram
+=========================== -->
+
+<section class="instagram">
+
+    <div class="container">
+
+        <div class="section-title" style="text-align:center;">
+
+            <small>@LANYU_JADE</small>
+
+            <h2>Follow Our Journey</h2>
+
+            <p>
+                Discover craftsmanship, daily inspiration,
+                and new collections.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="instagram-grid">
+
+        <a href="#"><img src="images/ins-1.jpg" alt=""></a>
+
+        <a href="#"><img src="images/ins-2.jpg" alt=""></a>
+
+        <a href="#"><img src="images/ins-3.jpg" alt=""></a>
+
+        <a href="#"><img src="images/ins-4.jpg" alt=""></a>
+
+        <a href="#"><img src="images/ins-5.jpg" alt=""></a>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+Newsletter
+=========================== -->
+
+<section class="newsletter">
+
+    <div class="container">
+
+        <small>JOIN OUR NEWSLETTER</small>
+
+        <h2>
+            Receive Stories,<br>
+            Collections & Invitations
+        </h2>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Your Email">
+
+            <button>
+
+                Subscribe →
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+Footer
+=========================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>LAN YU</h3>
+
+<p>
+
+东方玉石艺术品牌。
+
+坚持天然玉石、
+
+原创设计、
+
+匠心制作。
+
+</p>
+
+</div>
+
+<div>
+
+<h4>Shop</h4>
+
+<ul>
+
+<li><a href="#">Bracelets</a></li>
+
+<li><a href="#">Pendant</a></li>
+
+<li><a href="#">Necklace</a></li>
+
+<li><a href="#">Collections</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>Company</h4>
+
+<ul>
+
+<li><a href="#">About</a></li>
+
+<li><a href="#">Journal</a></li>
+
+<li><a href="#">Craft</a></li>
+
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>Support</h4>
+
+<ul>
+
+<li><a href="#">Shipping</a></li>
+
+<li><a href="#">Returns</a></li>
+
+<li><a href="#">Privacy</a></li>
+
+<li><a href="#">Terms</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 LAN YU
+
+All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- Back To Top -->
+
+<div class="back-top">
+
+↑
+
+</div>
+
+<!-- ======================================
+CSS
+====================================== -->
+
+<style>
+
+.instagram{
+
+padding:170px 0 120px;
+
+background:white;
+
+}
+
+.instagram-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+margin-top:70px;
+
+}
+
+.instagram-grid img{
+
+width:100%;
+
+display:block;
+
+transition:.8s;
+
+}
+
+.instagram-grid a{
+
+overflow:hidden;
+
+}
+
+.instagram-grid img:hover{
+
+transform:scale(1.08);
+
+}
+
+.newsletter{
+
+padding:170px 0;
+
+background:#F6F3ED;
+
+text-align:center;
+
+}
+
+.newsletter small{
+
+letter-spacing:4px;
+
+color:#A88E72;
+
+display:block;
+
+margin-bottom:18px;
+
+}
+
+.newsletter h2{
+
+font-family:"Noto Serif SC",serif;
+
+font-size:56px;
+
+font-weight:300;
+
+margin-bottom:55px;
+
+line-height:1.4;
+
+}
+
+.newsletter-form{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+max-width:760px;
+
+margin:auto;
+
+}
+
+.newsletter input{
+
+flex:1;
+
+height:68px;
+
+padding:0 28px;
+
+font-size:16px;
+
+border:none;
+
+outline:none;
+
+background:white;
+
+}
+
+.newsletter button{
+
+width:210px;
+
+background:var(--gold);
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+font-size:16px;
+
+transition:.35s;
+
+}
+
+.newsletter button:hover{
+
+background:#9E7345;
+
+}
+
+footer{
+
+background:#111;
+
+color:white;
+
+padding:110px 0 40px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr 1fr;
+
+gap:70px;
+
+padding-bottom:70px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+footer h3{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:42px;
+
+margin-bottom:28px;
+
+}
+
+footer h4{
+
+margin-bottom:22px;
+
+font-size:18px;
+
+}
+
+footer ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+footer li{
+
+margin-bottom:16px;
+
+}
+
+footer a{
+
+color:#B9B9B9;
+
+transition:.35s;
+
+}
+
+footer a:hover{
+
+color:white;
+
+}
+
+footer p{
+
+color:#9D9D9D;
+
+line-height:2;
+
+}
+
+.copyright{
+
+text-align:center;
+
+padding-top:40px;
+
+color:#7D7D7D;
+
+font-size:14px;
+
+}
+
+.back-top{
+
+position:fixed;
+
+right:40px;
+
+bottom:40px;
+
+width:56px;
+
+height:56px;
+
+border-radius:50%;
+
+background:var(--gold);
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+cursor:pointer;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.35s;
+
+z-index:1000;
+
+}
+
+.back-top.show{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+@media(max-width:1100px){
+
+.instagram-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.newsletter-form{
+
+flex-direction:column;
+
+}
+
+.newsletter button{
+
+width:100%;
+
+height:65px;
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.instagram-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.newsletter h2{
+
+font-size:36px;
+
+}
+
+}
+
+</style>
+
+<!-- ======================================
+Javascript
+====================================== -->
+
+<script>
+
+//
+// Sticky Header
+//
+
+const header=document.querySelector("header");
+
+window.addEventListener("scroll",()=>{
+
+header.classList.toggle("sticky",window.scrollY>80);
+
+});
+
+//
+// Back Top
+//
+
+const back=document.querySelector(".back-top");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>700){
+
+back.classList.add("show");
+
+}else{
+
+back.classList.remove("show");
+
+}
+
+});
+
+back.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+//
+// Reveal Animation
+//
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+
+threshold:.15
+
+});
+
+document.querySelectorAll("section").forEach(el=>{
+
+el.classList.add("fade");
+
+observer.observe(el);
+
+});
+
+</script>
+
+<style>
+
+.fade{
+
+opacity:0;
+
+transform:translateY(80px);
+
+transition:1s;
+
+}
+
+.fade.show{
+
+opacity:1;
+
+transform:none;
+
+}
+
+header.sticky{
+
+background:white;
+
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+padding:18px 0;
+
+transition:.35s;
+
+}
+
+header.sticky .nav a{
+
+color:#222;
+
+}
+
+header.sticky .logo{
+
+color:#111;
+
+}
+
+</style>
+
+</body>
+
+</html>

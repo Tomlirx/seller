@@ -50,6 +50,7 @@ model Product {
   stockQty    Int         @default(0)
   isActive    Boolean     @default(true)
   isFeatured  Boolean     @default(false)
+  isCollectionFeatured Boolean @default(false)
   orderItems  OrderItem[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt

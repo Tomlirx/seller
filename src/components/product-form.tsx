@@ -15,6 +15,7 @@ type ProductFormValues = {
   stockQty: number;
   isActive: boolean;
   isFeatured: boolean;
+  isCollectionFeatured: boolean;
 };
 
 export function ProductForm({ initial }: { initial?: ProductFormValues }) {
@@ -28,6 +29,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
   const [stockQty, setStockQty] = useState(initial?.stockQty?.toString() ?? "0");
   const [isActive, setIsActive] = useState(initial?.isActive ?? true);
   const [isFeatured, setIsFeatured] = useState(initial?.isFeatured ?? false);
+  const [isCollectionFeatured, setIsCollectionFeatured] = useState(initial?.isCollectionFeatured ?? false);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -86,6 +88,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
       stockQty: parseInt(stockQty, 10),
       isActive,
       isFeatured,
+      isCollectionFeatured,
     };
 
     const res = await fetch(
@@ -249,6 +252,14 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           onChange={(e) => setIsFeatured(e.target.checked)}
         />
         Featured on homepage (甄选珍品)
+      </label>
+      <label className="flex items-center gap-2 text-ink">
+        <input
+          type="checkbox"
+          checked={isCollectionFeatured}
+          onChange={(e) => setIsCollectionFeatured(e.target.checked)}
+        />
+        Show in homepage 精选系列 (Collection grid)
       </label>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <div className="flex items-center gap-3">

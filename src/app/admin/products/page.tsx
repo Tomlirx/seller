@@ -25,6 +25,7 @@ export default async function AdminProductsPage() {
             <th className="py-2">Stock</th>
             <th className="py-2">Active</th>
             <th className="py-2">Featured</th>
+            <th className="py-2">Collection</th>
             <th className="py-2" />
           </tr>
         </thead>
@@ -37,6 +38,7 @@ export default async function AdminProductsPage() {
               <td className="py-2">{product.stockQty}</td>
               <td className="py-2">{product.isActive ? "Yes" : "No"}</td>
               <td className="py-2">{product.isFeatured ? "Yes" : "No"}</td>
+              <td className="py-2">{product.isCollectionFeatured ? "Yes" : "No"}</td>
               <td className="py-2">
                 <Link href={`/admin/products/${product.id}`} className="underline text-gold">
                   Edit

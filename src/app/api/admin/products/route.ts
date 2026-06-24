@@ -13,6 +13,7 @@ const productSchema = z.object({
   stockQty: z.number().int().nonnegative(),
   isActive: z.boolean(),
   isFeatured: z.boolean().optional(),
+  isCollectionFeatured: z.boolean().optional(),
 });
 
 export async function POST(req: Request) {

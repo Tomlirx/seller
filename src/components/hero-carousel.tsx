@@ -18,8 +18,8 @@ const SLIDES = [
     eyebrow: "匠心雕琢 · 方得圆满",
     title: ["玉不琢", "不成器"],
     subtitle: "每一件岚玉，皆经匠心雕琢而成，传承千年东方工艺。",
-    ctaText: "了解品牌理念",
-    ctaHref: "/collections",
+    ctaText: "查看佛公系列",
+    ctaHref: "/collections/BUDDHA",
   },
   {
     image: "/marketing/lanyu-guanyin.jpg",

@@ -158,14 +158,14 @@ export default async function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-7">
                 {collectionProducts.map((product) => (
                   <Link key={product.id} href={`/products/${product.slug}`} className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
-                    <div className="relative aspect-square bg-[#F8F5F0] p-8 sm:p-10 overflow-hidden">
+                    <div className="relative aspect-square bg-[#F8F5F0] overflow-hidden">
                       {product.imageUrls[0] ? (
                         <>
                           <Image
                             src={product.imageUrls[0]}
                             alt={product.name}
                             fill
-                            className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.08]"
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.08]"
                           />
                           <span className="absolute top-2 left-2 z-10 bg-ink/80 text-ivory-light text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
                         </>

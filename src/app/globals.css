@@ -1,34 +1,118 @@
 @import "tailwindcss";
 
+/*
+ * 岚玉 dark-luxury token set (Phase 7).
+ * Rules borrowed from reviewed design systems:
+ *  - one accent (gold), semantic colors on text only
+ *  - one shadow, reserved for product imagery — never chrome
+ *  - product photos always sit on the single light --stage
+ *  - --stage-ink* are for text layered ON light imagery and must NOT flip with the theme
+ */
 :root {
-  --ivory: #f8f4ee;
-  --ivory-light: #faf8f5;
-  --ink: #6d5846;
-  --ink-soft: #8a7a69;
-  --gold: #b48a57;
-  --gold-soft: #c9a479;
-  --jade: #a7c8b5;
-  --jade-deep: #7fa690;
+  --canvas: #1a1815;
+  --canvas-soft: #201d19;
+  --surface: #26221d;
+  --footer: #141210;
+  --stage: #f2ede5;
+  --stage-ink: #5c4b3a;
+  --stage-ink-soft: #6e5d49;
+  --text: #ede7dc;
+  --text-muted: #a99d8d;
+  --text-faint: #8f8375;
+  --gold: #c9a479;
+  --gold-deep: #b48a57;
+  --line: #35302a;
+  --line-strong: #4a4238;
+  --danger: #e5847c;
+  --success: #9dbba7;
+  --shadow-product: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+
+  /* Legacy aliases — every existing bg-ivory/text-ink/etc. class flips via these. */
+  --ivory: var(--canvas);
+  --ivory-light: var(--surface);
+  --ink: var(--text);
+  --ink-soft: var(--text-muted);
+  --gold-soft: var(--gold-deep);
+  --jade: var(--success);
+  --jade-deep: var(--success);
+}
+
+/* Light theme scope for the admin backoffice (utilities read raw vars at runtime). */
+.theme-light {
+  --canvas: #f8f4ee;
+  --canvas-soft: #f2ede5;
+  --surface: #ffffff;
+  --stage: #f2ede5;
+  --text: #3f342a;
+  --text-muted: #6d5846;
+  --text-faint: #8a7a69;
+  --gold: #a5793f;
+  --gold-deep: #8a6534;
   --line: #e6ddd3;
+  --line-strong: #d8ccbc;
+  --danger: #b3261e;
+  --success: #3f6e54;
+
+  /* var() inside a custom property is substituted where it's DEFINED (:root),
+     so the legacy aliases must be re-declared here with literal light values. */
+  --ivory: #f8f4ee;
+  --ivory-light: #ffffff;
+  --ink: #3f342a;
+  --ink-soft: #6d5846;
+  --gold-soft: #8a6534;
+  --jade: #3f6e54;
+  --jade-deep: #3f6e54;
 }
 
 @theme inline {
+  --color-canvas: var(--canvas);
+  --color-canvas-soft: var(--canvas-soft);
+  --color-surface: var(--surface);
+  --color-footer: var(--footer);
+  --color-stage: var(--stage);
+  --color-stage-ink: var(--stage-ink);
+  --color-stage-ink-soft: var(--stage-ink-soft);
+  --color-text-strong: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
   --color-ivory: var(--ivory);
   --color-ivory-light: var(--ivory-light);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-jade: var(--jade);
   --color-jade-deep: var(--jade-deep);
-  --color-line: var(--line);
-  --color-background: var(--ivory);
-  --color-foreground: var(--ink);
+  --color-background: var(--canvas);
+  --color-foreground: var(--text);
   --font-sans: var(--font-inter), var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-serif: var(--font-noto-serif-sc), "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--canvas);
+  color: var(--text);
+}
+
+@layer base {
+  /* Universal press micro-interaction. */
+  :where(button, [role="button"], a[data-cta]):active {
+    transform: scale(0.95);
+  }
+
+  /* Visible keyboard focus, no glow. */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--canvas);
+  }
 }

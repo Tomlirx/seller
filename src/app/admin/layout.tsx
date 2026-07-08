@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex-1 mx-auto max-w-4xl w-full px-4 py-10">
+    <main className="theme-light flex-1 w-full bg-canvas text-ink">
+      <div className="mx-auto max-w-4xl px-4 py-10">
       <div className="flex items-center gap-4 mb-8 text-sm">
         <Link href="/admin/products" className="font-medium text-gold underline">
           Products
@@ -14,7 +15,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Categories
         </Link>
       </div>
-      {children}
+        {children}
+      </div>
     </main>
   );
 }

@@ -98,7 +98,7 @@ export default async function Home() {
 
       {/* Brand / Philosophy */}
       <FadeInSection>
-        <section className="relative py-24 sm:py-36 bg-[#FAF8F4] overflow-hidden">
+        <section className="relative py-24 sm:py-36 bg-canvas overflow-hidden">
           <div className="absolute -right-[8%] -top-[5%] w-[60%] h-[120%] opacity-[0.07] pointer-events-none">
             <Image src="/marketing/lanyu-ink-mountain.png" alt="" fill className="object-cover" />
           </div>
@@ -143,7 +143,7 @@ export default async function Home() {
       {/* Collection grid */}
       {collectionProducts.length > 0 && (
         <FadeInSection>
-          <section className="py-24 sm:py-36 bg-white">
+          <section className="py-24 sm:py-36 bg-canvas-soft">
             <PageContainer>
               <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
                 <div>
@@ -158,7 +158,7 @@ export default async function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-7">
                 {collectionProducts.map((product) => (
                   <Link key={product.id} href={`/products/${product.slug}`} className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
-                    <div className="relative aspect-square bg-[#F8F5F0] overflow-hidden">
+                    <div className="relative aspect-square bg-stage overflow-hidden">
                       {product.imageUrls[0] ? (
                         <>
                           <Image
@@ -167,7 +167,7 @@ export default async function Home() {
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-[1.08]"
                           />
-                          <span className="absolute top-2 left-2 z-10 bg-ink/80 text-ivory-light text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                          <span className="absolute top-2 left-2 z-10 bg-canvas/85 text-text-strong text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
                         </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center text-ink-soft text-xs">No image</div>
@@ -175,7 +175,7 @@ export default async function Home() {
                     </div>
                     <div className="pt-5 text-center">
                       <h3 className="font-serif text-base sm:text-lg text-ink mb-1">{product.name}</h3>
-                      <p className="text-[11px] tracking-[0.15em] text-[#998E84]">{categoryLabel(product.category)?.zh}</p>
+                      <p className="text-[11px] tracking-[0.15em] text-text-faint">{categoryLabel(product.category)?.zh}</p>
                     </div>
                   </Link>
                 ))}
@@ -188,7 +188,7 @@ export default async function Home() {
       {/* Featured gallery */}
       {heroProduct && (
         <FadeInSection>
-          <section className="py-24 sm:py-40 bg-[#F7F3ED]">
+          <section className="py-24 sm:py-40 bg-canvas">
             <PageContainer>
               <div className="grid sm:grid-cols-[38%_62%] gap-12 sm:gap-20 items-center">
                 <div className="flex flex-col gap-5">
@@ -199,7 +199,8 @@ export default async function Home() {
                   </p>
                   <Link
                     href={`/products/${heroProduct.slug}`}
-                    className="inline-flex w-fit items-center gap-3 border border-[#D8C7B5] text-gold px-8 py-4 text-sm tracking-wide hover:bg-gold hover:text-white transition-colors mt-2"
+                    data-cta
+                    className="inline-flex w-fit items-center gap-3 border border-gold/40 text-gold px-8 py-4 text-sm uppercase tracking-[0.12em] hover:bg-gold hover:text-canvas transition-colors mt-2"
                   >
                     立即探索
                   </Link>
@@ -209,7 +210,7 @@ export default async function Home() {
                     {heroProduct.imageUrls[0] ? (
                       <>
                         <Image src={heroProduct.imageUrls[0]} alt={heroProduct.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
-                        <span className="absolute top-3 left-3 z-10 bg-ink/80 text-ivory-light text-[10px] tracking-[0.1em] px-2.5 py-1">实物原图</span>
+                        <span className="absolute top-3 left-3 z-10 bg-canvas/85 text-text-strong text-[10px] tracking-[0.1em] px-2.5 py-1">实物原图</span>
                       </>
                     ) : (
                       <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-sm">No image</div>
@@ -220,7 +221,7 @@ export default async function Home() {
                       {product.imageUrls[0] ? (
                         <>
                           <Image src={product.imageUrls[0]} alt={product.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
-                          <span className="absolute top-2 left-2 z-10 bg-ink/80 text-ivory-light text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                          <span className="absolute top-2 left-2 z-10 bg-canvas/85 text-text-strong text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
                         </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-xs">No image</div>
@@ -236,13 +237,13 @@ export default async function Home() {
 
       {/* Editorial */}
       <FadeInSection>
-        <section className="bg-white">
+        <section className="bg-canvas">
           <div className="relative w-full h-[45vh] sm:h-[60vh]">
             <Image src="/marketing/lanyu-buddha.png" alt="一块玉，一段故事" fill className="object-cover" />
             <div className="absolute inset-0 flex items-center pl-[7vw] pr-10">
               <div className="max-w-[420px]">
-                <p className="text-xs tracking-[0.3em] text-[#A08E7A] mb-4 sm:mb-6">EDITORIAL</p>
-                <h2 className="font-serif text-2xl sm:text-4xl text-ink leading-[1.35]">
+                <p className="text-xs tracking-[0.3em] text-stage-ink-soft mb-4 sm:mb-6">EDITORIAL</p>
+                <h2 className="font-serif text-2xl sm:text-4xl text-stage-ink leading-[1.35]">
                   一块玉，
                   <br />
                   一段故事。
@@ -250,7 +251,7 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#FBF8F4] py-24 sm:py-36">
+          <div className="bg-canvas-soft py-24 sm:py-36">
             <PageContainer>
               <div className="max-w-[640px] mx-auto text-center">
                 <p className="text-ink-soft leading-[2.1]">
@@ -264,7 +265,7 @@ export default async function Home() {
 
       {/* USP */}
       <FadeInSection>
-        <section className="py-24 sm:py-36 bg-white">
+        <section className="py-24 sm:py-36 bg-canvas">
           <PageContainer>
             <div className="text-center max-w-xl mx-auto mb-16">
               <p className="text-xs tracking-[0.3em] text-gold mb-4">WHY LAN YU</p>
@@ -274,11 +275,11 @@ export default async function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
               {USP_ITEMS.map((item) => (
                 <div key={item.zh} className="text-center px-4 py-6 transition-transform duration-300 hover:-translate-y-2">
-                  <span className="mx-auto mb-6 flex h-20 w-20 sm:h-22 sm:w-22 items-center justify-center rounded-full border border-[#E4D8CB] text-gold">
+                  <span className="mx-auto mb-6 flex h-20 w-20 sm:h-22 sm:w-22 items-center justify-center rounded-full border border-line-strong text-gold">
                     {item.icon}
                   </span>
                   <h3 className="font-serif text-lg text-ink mb-3">{item.zh}</h3>
-                  <p className="text-sm text-[#8E847B] leading-[1.9]">{item.en}</p>
+                  <p className="text-sm text-text-muted leading-[1.9]">{item.en}</p>
                 </div>
               ))}
             </div>
@@ -288,7 +289,7 @@ export default async function Home() {
 
       {/* Craftsmanship */}
       <FadeInSection>
-        <section className="py-24 sm:py-40 bg-[#F7F3ED]">
+        <section className="py-24 sm:py-40 bg-canvas-soft">
           <PageContainer>
             <div className="grid sm:grid-cols-[58%_42%] gap-12 sm:gap-20 items-center">
               <div className="relative aspect-[4/3] overflow-hidden order-2 sm:order-1">
@@ -297,7 +298,7 @@ export default async function Home() {
                   <span
                     aria-disabled="true"
                     title="视频即将上线 Video coming soon"
-                    className="cursor-default flex h-[80px] w-[80px] sm:h-[90px] sm:w-[90px] items-center justify-center rounded-full bg-white transition-transform hover:scale-[1.08]"
+                    className="cursor-default flex h-[80px] w-[80px] sm:h-[90px] sm:w-[90px] items-center justify-center rounded-full bg-stage transition-transform hover:scale-[1.08]"
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-gold ml-1">
                       <path d="M8 5 L19 12 L8 19 Z" />
@@ -306,11 +307,11 @@ export default async function Home() {
                 </div>
               </div>
               <div className="flex flex-col gap-5 order-1 sm:order-2">
-                <p className="text-xs tracking-[0.3em] text-[#A28E79]">CRAFTSMANSHIP</p>
+                <p className="text-xs tracking-[0.3em] text-text-faint">CRAFTSMANSHIP</p>
                 <h2 className="font-serif text-3xl sm:text-[2.5rem] text-ink leading-[1.4]">
                   一件作品，需要经历数十道工序。
                 </h2>
-                <p className="text-[#8D837A] leading-[2]">
+                <p className="text-text-muted leading-[2]">
                   从原石挑选、设计绘图、玉雕、抛光、镶嵌，直到最终检验。每一步都由经验丰富的工匠完成。
                 </p>
               </div>
@@ -321,21 +322,21 @@ export default async function Home() {
 
       {/* Story / testimonial */}
       <FadeInSection>
-        <section className="py-24 sm:py-40 bg-white">
+        <section className="py-24 sm:py-40 bg-canvas">
           <PageContainer>
             <div className="grid sm:grid-cols-2 gap-12 sm:gap-20 items-center">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image src="/marketing/lanyu-guanyin.jpg" alt="" fill className="object-cover transition-transform duration-1000 hover:scale-105" />
               </div>
               <div>
-                <p className="text-xs tracking-[0.3em] text-[#A08D78] mb-5">CUSTOMER STORY</p>
+                <p className="text-xs tracking-[0.3em] text-text-faint mb-5">CUSTOMER STORY</p>
                 <blockquote className="font-serif text-2xl sm:text-[2.3rem] font-light leading-[1.8] text-ink mb-7">
                   &ldquo; 我收藏的不只是玉，
                   <br />
                   而是一段值得纪念的人生。 &rdquo;
                 </blockquote>
-                <p className="text-[#8B8178] leading-[2] mb-3">收到作品那一刻，真正打动我的，不是它的价值，而是那种温润与安静。</p>
-                <p className="text-[#8B8178] leading-[2]">它陪伴我完成了人生中很多重要时刻。</p>
+                <p className="text-text-muted leading-[2] mb-3">收到作品那一刻，真正打动我的，不是它的价值，而是那种温润与安静。</p>
+                <p className="text-text-muted leading-[2]">它陪伴我完成了人生中很多重要时刻。</p>
                 <div className="mt-7 text-gold font-medium tracking-[0.1em]">—— LAN YU Collector</div>
               </div>
             </div>
@@ -345,7 +346,7 @@ export default async function Home() {
 
       {/* Categories */}
       <FadeInSection>
-        <section className="py-24 sm:py-36 bg-[#F7F3ED]">
+        <section className="py-24 sm:py-36 bg-canvas-soft">
           <PageContainer>
             <div className="text-center mb-14">
               <p className="text-xs tracking-[0.3em] text-gold mb-3">CURATED COLLECTIONS</p>
@@ -365,7 +366,7 @@ export default async function Home() {
 
       {/* Trust badges */}
       <FadeInSection>
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-canvas">
           <PageContainer>
             <TrustBadges />
           </PageContainer>
@@ -374,7 +375,7 @@ export default async function Home() {
 
       {/* Instagram strip */}
       <FadeInSection>
-        <section className="pt-24 pb-16 sm:pt-36 sm:pb-24 bg-white">
+        <section className="pt-24 pb-16 sm:pt-36 sm:pb-24 bg-canvas">
           <PageContainer>
             <div className="text-center mb-14">
               <p className="text-xs tracking-[0.3em] text-gold mb-3">@LANYU_JADE</p>
@@ -394,9 +395,9 @@ export default async function Home() {
 
       {/* Newsletter */}
       <FadeInSection>
-        <section className="py-24 sm:py-40 bg-[#F6F3ED] text-center">
+        <section className="py-24 sm:py-40 bg-canvas-soft text-center">
           <PageContainer>
-            <p className="text-xs tracking-[0.3em] text-[#A88E72] mb-4">JOIN OUR NEWSLETTER</p>
+            <p className="text-xs tracking-[0.3em] text-text-faint mb-4">JOIN OUR NEWSLETTER</p>
             <h2 className="font-serif text-3xl sm:text-[2.6rem] text-ink leading-[1.4] mb-12">
               Receive Stories,
               <br />

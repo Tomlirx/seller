@@ -23,8 +23,8 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 bg-ivory/92 backdrop-blur-md border-b border-ink/5 transition-all duration-300 ${
-          scrolled ? "h-[72px] shadow-[0_10px_30px_rgba(0,0,0,0.05)]" : "h-[86px]"
+        className={`fixed inset-x-0 top-0 z-50 bg-canvas/92 backdrop-blur-md border-b transition-all duration-300 ${
+          scrolled ? "h-[72px] border-line-strong" : "h-[86px] border-line"
         }`}
       >
         <nav className="mx-auto max-w-[1600px] px-6 sm:px-20 h-full grid grid-cols-3 items-center">
@@ -59,7 +59,7 @@ export function Nav() {
                 <path d="M3 4 H5 L7.5 16 H18 L20 7 H6.5 M9 21 a1 1 0 100-2 1 1 0 000 2 M17 21 a1 1 0 100-2 1 1 0 000 2" strokeLinejoin="round" />
               </svg>
               {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-gold text-ivory-light text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-gold text-canvas text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                   {itemCount}
                 </span>
               )}
@@ -77,7 +77,7 @@ export function Nav() {
               </button>
               {accountOpen && (
                 <div
-                  className="absolute right-0 top-8 bg-ivory-light border border-line rounded shadow-md py-2 w-44 text-sm text-ink flex flex-col"
+                  className="absolute right-0 top-8 bg-surface border border-line py-2 w-44 text-sm text-ink flex flex-col"
                   onMouseLeave={() => setAccountOpen(false)}
                 >
                   {session?.user ? (

@@ -5,13 +5,13 @@ import { PageContainer } from "@/components/page-container";
 
 export function Footer() {
   return (
-    <footer className="bg-[#111] text-white mt-20">
+    <footer className="bg-footer text-text-strong border-t border-line mt-20">
       <PageContainer className="pt-24 pb-10">
-        <div className="grid sm:grid-cols-4 gap-12 pb-14 border-b border-white/10">
+        <div className="grid sm:grid-cols-4 gap-12 pb-14 border-b border-line">
           <div className="flex flex-col gap-3 sm:col-span-1">
             <p className="font-serif text-2xl">岚玉</p>
             <p className="text-[10px] tracking-[0.2em] text-gold">LAN YU</p>
-            <p className="text-sm text-[#9D9D9D] leading-relaxed mt-2">
+            <p className="text-sm text-text-faint leading-relaxed mt-2">
               东方玉石艺术品牌。坚持天然玉石、原创设计、匠心制作。
               <br />
               Natural jadeite, curated from a private collection.
@@ -20,10 +20,10 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <p className="text-sm tracking-widest">品类 COLLECTIONS</p>
-            <ul className="flex flex-col gap-3 text-sm text-[#B9B9B9]">
+            <ul className="flex flex-col gap-3 text-sm text-text-muted">
               {PRODUCT_CATEGORIES.filter((c) => c.value !== "OTHER").map((c) => (
                 <li key={c.value}>
-                  <Link href={`/collections/${c.value}`} className="hover:text-white transition-colors">
+                  <Link href={`/collections/${c.value}`} className="hover:text-text-strong transition-colors">
                     {c.zh} {c.en}
                   </Link>
                 </li>
@@ -33,18 +33,18 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <p className="text-sm tracking-widest">支持 SUPPORT</p>
-            <ul className="flex flex-col gap-3 text-sm text-[#B9B9B9]">
+            <ul className="flex flex-col gap-3 text-sm text-text-muted">
               <li>
-                <Link href="/login" className="hover:text-white transition-colors">登录 Log in</Link>
+                <Link href="/login" className="hover:text-text-strong transition-colors">登录 Log in</Link>
               </li>
               <li>
-                <Link href="/signup" className="hover:text-white transition-colors">注册 Sign up</Link>
+                <Link href="/signup" className="hover:text-text-strong transition-colors">注册 Sign up</Link>
               </li>
               <li>
-                <Link href="/orders" className="hover:text-white transition-colors">订单 Orders</Link>
+                <Link href="/orders" className="hover:text-text-strong transition-colors">订单 Orders</Link>
               </li>
             </ul>
-            <div className="flex gap-3 mt-2 text-[#B9B9B9]">
+            <div className="flex gap-3 mt-2 text-text-muted">
               <span title="即将上线 Coming soon" className="cursor-default">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
                   <rect x="3" y="3" width="18" height="18" rx="4" />
@@ -61,12 +61,12 @@ export function Footer() {
 
           <div className="flex flex-col gap-3">
             <p className="text-sm tracking-widest">订阅资讯 NEWSLETTER</p>
-            <p className="text-sm text-[#9D9D9D]">订阅获取新品与活动信息</p>
+            <p className="text-sm text-text-faint">订阅获取新品与活动信息</p>
             <NewsletterForm />
           </div>
         </div>
 
-        <p className="text-center text-[14px] text-[#7D7D7D] pt-10">
+        <p className="text-center text-[14px] text-text-faint pt-10">
           © {new Date().getFullYear()} 岚玉 LAN YU. ALL RIGHTS RESERVED.
         </p>
       </PageContainer>

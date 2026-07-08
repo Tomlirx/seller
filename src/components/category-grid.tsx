@@ -32,7 +32,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
               href={`/collections/${c.value}`}
               className="group flex flex-col items-center gap-3 w-24 sm:w-28"
             >
-              <div className="aspect-square w-24 sm:w-28 rounded-full bg-ivory-light border border-line overflow-hidden relative flex items-center justify-center">
+              <div className="aspect-square w-24 sm:w-28 rounded-full bg-stage border border-line-strong overflow-hidden relative flex items-center justify-center">
                 {image ? (
                   <Image
                     src={image}
@@ -41,7 +41,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="h-full w-full flex flex-col items-center justify-center text-ink-soft gap-1">
+                  <div className="h-full w-full flex flex-col items-center justify-center text-stage-ink-soft gap-1">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
                       <rect x="3" y="3" width="18" height="18" rx="2" />
                       <circle cx="9" cy="9" r="1.5" />
@@ -73,7 +73,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
             href={`/collections/${c.value}`}
             className="group flex flex-col gap-3"
           >
-            <div className="aspect-[4/5] bg-ivory-light border border-line rounded overflow-hidden relative flex items-center justify-center">
+            <div className="aspect-[4/5] bg-stage overflow-hidden relative flex items-center justify-center">
               {image ? (
                 <Image
                   src={image}
@@ -82,7 +82,7 @@ export async function CategoryGrid({ variant = "grid" }: { variant?: "grid" | "c
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               ) : (
-                <div className="h-full w-full flex flex-col items-center justify-center text-ink-soft gap-2">
+                <div className="h-full w-full flex flex-col items-center justify-center text-stage-ink-soft gap-2">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-8 w-8">
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <circle cx="9" cy="9" r="2" />

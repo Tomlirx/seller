@@ -16,7 +16,7 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
               key={url}
               type="button"
               onClick={() => setActive(index)}
-              className={`relative h-16 w-16 rounded overflow-hidden border ${
+              className={`relative h-16 w-16 overflow-hidden border ${
                 index === active ? "border-gold" : "border-line"
               }`}
             >
@@ -25,11 +25,11 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
           ))}
         </div>
       )}
-      <div className="aspect-square flex-1 bg-ivory-light border border-line rounded overflow-hidden relative order-1 sm:order-2">
+      <div className="aspect-square flex-1 bg-stage overflow-hidden relative order-1 sm:order-2 shadow-[var(--shadow-product)]">
         {current ? (
           <Image src={current} alt={alt} fill className="object-cover" />
         ) : (
-          <div className="h-full w-full flex items-center justify-center text-ink-soft text-sm">
+          <div className="h-full w-full flex items-center justify-center text-stage-ink-soft text-sm">
             No image
           </div>
         )}

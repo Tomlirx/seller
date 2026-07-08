@@ -80,7 +80,7 @@ export default async function CollectionCategoryPage({
             {products.length === 0 ? (
               <p className="text-ink-soft text-center py-16">暂无商品 · No products yet.</p>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-6">
                 {products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -95,7 +95,7 @@ export default async function CollectionCategoryPage({
                     href={`/collections/${activeCategory}?page=${p}`}
                     className={`h-8 w-8 flex items-center justify-center rounded-full border text-sm transition-colors ${
                       p === pageNum
-                        ? "bg-gold text-ivory-light border-gold"
+                        ? "bg-gold text-canvas border-gold"
                         : "border-line text-ink-soft hover:border-gold hover:text-gold"
                     }`}
                   >

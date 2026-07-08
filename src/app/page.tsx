@@ -5,6 +5,7 @@ import { TrustBadges } from "@/components/trust-badges";
 import { PageContainer } from "@/components/page-container";
 import { CategoryGrid } from "@/components/category-grid";
 import { categoryLabel } from "@/lib/categories";
+import { formatPrice } from "@/lib/format";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { FadeInSection } from "@/components/fade-in-section";
@@ -155,9 +156,9 @@ export default async function Home() {
                   查看全部 →
                 </Link>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-7">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-6">
                 {collectionProducts.map((product) => (
-                  <Link key={product.id} href={`/products/${product.slug}`} className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2">
+                  <Link key={product.id} href={`/products/${product.slug}`} className="group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
                     <div className="relative aspect-square bg-stage overflow-hidden">
                       {product.imageUrls[0] ? (
                         <>
@@ -176,6 +177,7 @@ export default async function Home() {
                     <div className="pt-5 text-center">
                       <h3 className="font-serif text-base sm:text-lg text-ink mb-1">{product.name}</h3>
                       <p className="text-[11px] tracking-[0.15em] text-text-faint">{categoryLabel(product.category)?.zh}</p>
+                      <p className="text-gold text-sm mt-1">{formatPrice(product.priceCents)}</p>
                     </div>
                   </Link>
                 ))}

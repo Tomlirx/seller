@@ -15,6 +15,7 @@ type RecommendedProduct = {
   id: string;
   slug: string;
   name: string;
+  category: string;
   priceCents: number;
   imageUrls: string[];
 };

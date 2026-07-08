@@ -59,28 +59,29 @@ function SlideText({ slide, isLight }: { slide: Slide; isLight: boolean }) {
   return (
     <div className="max-w-[480px]">
       <p
-        className={`font-serif text-xs tracking-[0.3em] mb-3 sm:mb-6 ${isLight ? "text-ivory-light/90" : "text-[#A08E7A]"}`}
+        className={`font-serif text-xs tracking-[0.3em] mb-3 sm:mb-6 ${isLight ? "text-text-strong/90" : "text-stage-ink-soft"}`}
       >
         {slide.eyebrow}
       </p>
       <h1
-        className={`font-serif text-2xl sm:text-4xl lg:text-[3rem] font-light leading-[1.2] mb-3 sm:mb-7 ${isLight ? "text-ivory-light" : "text-ink"}`}
+        className={`font-serif text-2xl sm:text-4xl lg:text-[3rem] font-light leading-[1.2] mb-3 sm:mb-7 ${isLight ? "text-text-strong" : "text-stage-ink"}`}
       >
         {slide.title[0]}
         <br />
         {slide.title[1]}
       </h1>
       <p
-        className={`text-[13px] sm:text-base leading-[1.8] sm:leading-[2] mb-5 sm:mb-10 max-w-md ${isLight ? "text-ivory-light/80" : "text-ink-soft"}`}
+        className={`text-[13px] sm:text-base leading-[1.8] sm:leading-[2] mb-5 sm:mb-10 max-w-md ${isLight ? "text-text-muted" : "text-stage-ink-soft"}`}
       >
         {slide.subtitle}
       </p>
       <Link
         href={slide.ctaHref}
-        className={`inline-flex items-center gap-3 border px-6 sm:px-8 py-3 sm:py-4 text-sm tracking-wide transition-colors duration-300 ${
+        data-cta
+        className={`inline-flex items-center gap-3 border px-6 sm:px-8 py-3 sm:py-4 text-sm uppercase tracking-[0.12em] transition-colors duration-300 ${
           isLight
-            ? "border-ivory-light text-ivory-light hover:bg-ivory-light hover:text-ink"
-            : "border-[#D8C7B5] text-gold hover:bg-gold hover:text-white hover:border-gold"
+            ? "border-gold/60 text-gold hover:bg-gold hover:text-canvas hover:border-gold"
+            : "border-stage-ink/40 text-stage-ink hover:bg-stage-ink hover:text-stage hover:border-stage-ink"
         }`}
       >
         {slide.ctaText}
@@ -104,8 +105,8 @@ export function HeroCarousel() {
   const isLight = slide.theme === "light";
 
   return (
-    <section className="relative w-full bg-ivory">
-      <div className="relative aspect-[2/1] max-h-[80vh] w-full overflow-hidden">
+    <section className="relative w-full bg-canvas">
+      <div className="relative aspect-[2/1] max-h-[80vh] w-full overflow-hidden border-b border-line">
         {SLIDES.map((s, i) => (
           <div
             key={s.image}
@@ -128,7 +129,7 @@ export function HeroCarousel() {
         {slide.hasBakedText && <Link href={slide.ctaHref} className="absolute inset-0 z-10" aria-label={slide.ctaText} />}
 
         <p
-          className={`absolute right-6 sm:right-14 bottom-6 sm:bottom-10 z-10 font-serif text-2xl sm:text-4xl ${isLight ? "text-ivory-light/80" : "text-ink/70"}`}
+          className={`absolute right-6 sm:right-14 bottom-6 sm:bottom-10 z-10 font-serif text-2xl sm:text-4xl ${isLight ? "text-text-strong/80" : "text-stage-ink/70"}`}
         >
           {String(index + 1).padStart(2, "0")}
         </p>
@@ -142,11 +143,11 @@ export function HeroCarousel() {
               className={`h-1.5 rounded-full transition-all ${
                 i === index
                   ? isLight
-                    ? "w-6 bg-ivory-light"
-                    : "w-6 bg-ink"
+                    ? "w-6 bg-text-strong"
+                    : "w-6 bg-stage-ink"
                   : isLight
-                    ? "w-1.5 bg-ivory-light/40"
-                    : "w-1.5 bg-ink/30"
+                    ? "w-1.5 bg-text-strong/40"
+                    : "w-1.5 bg-stage-ink/30"
               }`}
             />
           ))}
@@ -155,7 +156,7 @@ export function HeroCarousel() {
 
       {!slide.hasBakedText && (
         <div className="sm:hidden px-6 py-8">
-          <SlideText slide={slide} isLight={false} />
+          <SlideText slide={slide} isLight={true} />
         </div>
       )}
     </section>

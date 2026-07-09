@@ -11,6 +11,20 @@ export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 12;
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
+  const label = categoryLabel(category as ProductCategoryValue);
+  if (!label) return {};
+  return {
+    title: `${label.zh} ${label.en}`,
+    description: label.description || `岚玉 ${label.zh} 系列 — 天然翡翠精选藏品。`,
+  };
+}
+
 export default async function CollectionCategoryPage({
   params,
   searchParams,

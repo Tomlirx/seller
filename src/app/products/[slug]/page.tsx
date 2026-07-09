@@ -1,3 +1,5 @@
+import { cache } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
@@ -13,13 +15,36 @@ import { ProductCard } from "@/components/product-card";
 import { StickyAddToCartBar } from "@/components/sticky-add-to-cart-bar";
 import { getRecommendedProducts } from "@/lib/recommendations";
 
+const getProduct = cache(async (slug: string) => {
+  return prisma.product.findUnique({ where: { slug } });
+});
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+  if (!product || !product.isActive) return {};
+  return {
+    title: product.name,
+    description: product.description.slice(0, 160),
+    openGraph: {
+      title: product.name,
+      description: product.description.slice(0, 160),
+      images: product.imageUrls[0] ? [product.imageUrls[0]] : undefined,
+    },
+  };
+}
+
 export default async function ProductPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = await prisma.product.findUnique({ where: { slug } });
+  const product = await getProduct(slug);
 
   if (!product || !product.isActive) {
     notFound();

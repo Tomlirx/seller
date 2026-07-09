@@ -36,8 +36,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "岚玉 LAN YU",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  title: {
+    default: "岚玉 LAN YU",
+    template: "%s · 岚玉 LAN YU",
+  },
   description: "天然翡翠 · 精选藏品 — Natural jadeite, curated from a private collection.",
+  openGraph: {
+    siteName: "岚玉 LAN YU",
+    locale: "zh_CN",
+    type: "website",
+    images: ["/marketing/lanyu-moongate.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

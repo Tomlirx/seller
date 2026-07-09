@@ -42,7 +42,7 @@ export function BuyNowButton({ productId }: { productId: string }) {
       >
         {loading ? "跳转中… Redirecting…" : "立即购买 Buy now"}
       </button>
-      {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+      {error && <p className="text-danger text-sm mt-2">{error}</p>}
     </div>
   );
 }

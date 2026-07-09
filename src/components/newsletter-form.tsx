@@ -52,7 +52,7 @@ export function NewsletterForm() {
           订阅 Subscribe
         </button>
       </div>
-      {error && <p className="text-red-600 text-xs">{error}</p>}
+      {error && <p className="text-danger text-xs">{error}</p>}
     </form>
   );
 }

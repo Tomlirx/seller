@@ -123,7 +123,7 @@ export default function CartPage() {
                 </div>
                 <button
                   onClick={() => removeItem(item.productId)}
-                  className="text-sm text-red-600 underline"
+                  className="text-sm text-danger underline"
                 >
                   移除 Remove
                 </button>
@@ -140,7 +140,7 @@ export default function CartPage() {
               <span>总计 Total</span>
               <span className="text-gold">{formatPrice(totalCents)}</span>
             </div>
-            {error && <p className="text-red-600 text-sm">{error}</p>}
+            {error && <p className="text-danger text-sm">{error}</p>}
             <button
               onClick={handleCheckout}
               disabled={loading}

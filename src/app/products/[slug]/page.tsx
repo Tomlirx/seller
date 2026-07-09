@@ -74,7 +74,7 @@ export default async function ProductPage({
                 <BuyNowButton productId={product.id} />
               </div>
             ) : (
-              <p className="text-red-600 font-medium">Out of stock</p>
+              <p className="text-danger font-medium">Out of stock</p>
             )}
 
             <div className="mt-2">

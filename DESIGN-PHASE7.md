@@ -58,9 +58,11 @@
 | 7.2 | page.tsx/footer/nav 硬编码 hex 清扫，章节 canvas/canvas-soft A/B 交替 | ✅ 已提交 | `ebe0387` |
 | 7.3 | hero 文字层 stage-ink 适配 + 移动端 isLight=true + CTA 大写 | ✅ 已提交 | `49184d6` |
 | 7.4 | ProductCard Nike 解剖（+category 副标+价格+stage+浮起）、精选系列补价格、网格 gap-2 sm:gap-6、gallery 主图 shadow-product、category-grid stage | ✅ 已提交 | `706ed66` |
-| 7.5 | login/signup/orders/success 纳入设计系统 + text-red-600→text-danger | ✅ 代码已完成并预览验证，**尚未 commit**（改动在工作区）| — |
-| 7.6 | UX 补齐：not-found.tsx / 两个 loading.tsx / OG 元数据 | ⬜ 未开始 | — |
-| 7.7 | 收尾：其余 CTA 统一 + 全流程回归 + push | ⬜ 未开始 | — |
+| 7.5 | login/signup/orders/success 纳入设计系统 + text-red-600→text-danger | ✅ 已提交 | `9f08eca` |
+| 7.6 | UX 补齐：not-found.tsx / 两个 loading.tsx / OG 元数据 | ✅ 已提交 | `2f86cc4` |
+| 7.7 | 收尾：其余 CTA 统一 + 全流程回归 + push | ✅ 完成 | 见 git log |
+
+**Phase 7 全部完成。** 后续可选优化：珍珠类商品原图构图偏小（需重拍/重裁）；搜索与收藏功能仍是占位。
 
 ### 7.5 已完成明细（提交时用）
 - `login/login-form.tsx`、`signup/page.tsx`：眉题 ACCOUNT + serif h1 + Divider + 大写字段 label + 52px 输入/按钮规范

@@ -131,7 +131,7 @@ export default function CartPage() {
             ))}
           </div>
 
-          <div className="lg:sticky lg:top-24 self-start border border-line rounded p-6 flex flex-col gap-4 h-fit">
+          <div className="lg:sticky lg:top-24 self-start bg-surface border border-line p-6 flex flex-col gap-4 h-fit">
             <div className="flex items-center justify-between text-sm text-ink-soft">
               <span>小计 Subtotal</span>
               <span>{formatPrice(totalCents)}</span>
@@ -144,13 +144,14 @@ export default function CartPage() {
             <button
               onClick={handleCheckout}
               disabled={loading}
-              className="bg-gold text-ivory-light rounded px-4 py-2 w-full tracking-wide hover:bg-gold-soft transition-colors disabled:opacity-50"
+              className="h-[52px] bg-gold text-canvas w-full text-sm uppercase tracking-[0.12em] hover:bg-gold-deep transition-colors disabled:opacity-50"
             >
               {loading ? "跳转中… Redirecting…" : "结算 Checkout"}
             </button>
             <Link
               href="/"
-              className="text-center border border-line text-ink-soft rounded px-4 py-2 text-sm hover:border-gold hover:text-gold transition-colors"
+              data-cta
+              className="text-center border border-line text-ink-soft px-4 py-3 text-sm uppercase tracking-[0.12em] hover:border-gold hover:text-gold transition-colors"
             >
               继续购物 Continue shopping
             </Link>

@@ -34,7 +34,7 @@ export function StickyAddToCartBar({
   if (!visible) return null;
 
   return (
-    <div className="sm:hidden fixed bottom-16 inset-x-0 z-30 bg-ivory-light border-t border-line px-4 py-3 flex items-center justify-between gap-3">
+    <div className="sm:hidden fixed bottom-16 inset-x-0 z-30 bg-surface border-t border-line px-4 py-3 flex items-center justify-between gap-3">
       <div>
         <p className="font-serif text-sm text-ink truncate max-w-[140px]">{name}</p>
         <p className="text-gold text-sm">{formatPrice(priceCents)}</p>
@@ -45,7 +45,7 @@ export function StickyAddToCartBar({
           setAdded(true);
           setTimeout(() => setAdded(false), 1500);
         }}
-        className="bg-gold text-ivory-light rounded px-4 py-2 text-sm tracking-wide hover:bg-gold-soft transition-colors"
+        className="bg-gold text-canvas px-5 py-3 text-sm uppercase tracking-[0.12em] hover:bg-gold-deep transition-colors"
       >
         {added ? "已加入" : "加入购物车"}
       </button>

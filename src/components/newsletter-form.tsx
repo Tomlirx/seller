@@ -42,12 +42,12 @@ export function NewsletterForm() {
           placeholder="您的邮箱 Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 border border-line bg-ivory-light rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
+          className="flex-1 border border-line bg-surface px-3 py-2 text-sm text-ink placeholder:text-text-faint focus:outline-none focus:border-gold focus:shadow-[inset_0_0_0_1px_var(--gold)]"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="border border-gold text-gold px-4 py-2 text-sm tracking-wide hover:bg-gold hover:text-ivory-light transition-colors disabled:opacity-50"
+          className="border border-gold/40 text-gold px-4 py-2 text-sm uppercase tracking-[0.12em] hover:bg-gold hover:text-canvas hover:border-gold transition-colors disabled:opacity-50"
         >
           订阅 Subscribe
         </button>

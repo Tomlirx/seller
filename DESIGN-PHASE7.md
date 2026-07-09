@@ -91,6 +91,20 @@
 6. Tab 键出金色 focus 描边；按钮按压有收缩。
 7. 截图偶尔全空白是 headless 渲染毛病，改用 `preview_snapshot`（可靠）或 `preview_inspect` 查计算色值。
 
+## 项目历史阶段速览（Phase 7 之前，详情看 git log）
+
+| 阶段 | 内容 |
+|---|---|
+| 1 | Next.js 16 + Prisma/Postgres（生产 Supabase）+ Auth.js 角色 + Stripe Checkout/webhook + admin CRUD 建站 |
+| 2 | 浅色米白/金/玉设计系统 v1：令牌、Nav/Footer、collections 路由、商品详情/购物车重构、订阅功能、移动端底部导航 |
+| 3 | 首页杂志化：hero 轮播、分类圆环、精选画廊、工艺/藏家故事、Instagram 条 |
+| 4 | antsclass.com 迁移 46 个商品（图片转存 Vercel Blob、SKU upsert）+ 币种切到 MYR |
+| 5 | 皮肤 v2（用户 mockup）：Inter 字体、深色页脚、全页面章节重排、FadeIn/BackToTop |
+| 5.x | hero 全出血布局重构、营销图多轮替换（buddha/guanyin/story 无字版）、分类图后台管理（CategoryConfig 表 + /admin/categories 直传）|
+| 6 | 精选系列 object-cover 统一卡片；甄选珍品/精选系列 admin 勾选（Product.isFeatured / isCollectionFeatured，生产库已迁移）；"实物原图" badge；生产库全表开启 RLS |
+
+关键运维事实：生产 DB 是 Supabase pooler（改生产 schema 需用户逐次授权，用 scripts/ 下的 pg 脚本模式）；图片存 Vercel Blob（/api/upload）；营销图在 public/marketing/（**换图必须改文件名**，否则 /_next/image 缓存不失效——buddha 图踩过此坑）；部署 Vercel（seller-seven.vercel.app），push 到 main 自动部署。
+
 ## 其他背景
 
 - 商品照片是浅灰底手机实拍，质量参差——深色主题的浅色卡片策略就是为它设计的；两张珍珠图"商品显小"是原图构图问题，非 bug（已告知用户）。

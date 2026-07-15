@@ -5,7 +5,7 @@ import { TrustBadges } from "@/components/trust-badges";
 import { PageContainer } from "@/components/page-container";
 import { CategoryGrid } from "@/components/category-grid";
 import { categoryLabel } from "@/lib/categories";
-import { formatPrice } from "@/lib/format";
+import { Price } from "@/components/price";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { FadeInSection } from "@/components/fade-in-section";
@@ -180,7 +180,7 @@ export default async function Home() {
                     <div className="pt-5 text-center">
                       <h3 className="font-serif text-base sm:text-lg text-ink mb-1">{product.name}</h3>
                       <p className="text-[11px] tracking-[0.15em] text-text-faint">{categoryLabel(product.category)?.zh}</p>
-                      <p className="text-gold text-sm mt-1">{formatPrice(product.priceCents)}</p>
+                      <p className="text-sm mt-1"><Price priceCents={product.priceCents} /></p>
                     </div>
                   </Link>
                 ))}

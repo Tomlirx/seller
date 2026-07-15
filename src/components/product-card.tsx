@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { formatPrice } from "@/lib/format";
 import { categoryLabel } from "@/lib/categories";
+import { Price } from "@/components/price";
 
 type Product = {
   id: string;
@@ -47,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="flex flex-col gap-0.5">
         <p className="font-serif font-medium text-ink">{product.name}</p>
         <p className="text-sm text-text-faint">{categoryLabel(product.category)?.zh ?? product.category}</p>
-        <p className="text-gold">{formatPrice(product.priceCents)}</p>
+        <p><Price priceCents={product.priceCents} /></p>
       </div>
     </Link>
   );

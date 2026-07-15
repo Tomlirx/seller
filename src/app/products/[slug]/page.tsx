@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { formatPrice } from "@/lib/format";
+import { Price } from "@/components/price";
 import { categoryLabel } from "@/lib/categories";
 import { Divider } from "@/components/divider";
 import { AddToCartButton } from "@/components/add-to-cart-button";
@@ -81,7 +81,7 @@ export default async function ProductPage({
             )}
             <h1 className="font-serif text-2xl text-ink">{product.name}</h1>
             <Divider className="!justify-start" />
-            <p className="text-xl text-gold">{formatPrice(product.priceCents)}</p>
+            <p className="text-xl"><Price priceCents={product.priceCents} /></p>
             <p className="text-ink-soft whitespace-pre-line leading-relaxed">{product.description}</p>
 
             <span className="inline-block w-fit text-xs border border-line rounded-full px-3 py-1 text-ink-soft">

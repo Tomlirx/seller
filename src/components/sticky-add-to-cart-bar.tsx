@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { formatPrice } from "@/lib/format";
 import { useCartStore } from "@/lib/cart-store";
+import { Price } from "@/components/price";
 
 export function StickyAddToCartBar({
   productId,
@@ -37,7 +37,7 @@ export function StickyAddToCartBar({
     <div className="sm:hidden fixed bottom-16 inset-x-0 z-30 bg-surface border-t border-line px-4 py-3 flex items-center justify-between gap-3">
       <div>
         <p className="font-serif text-sm text-ink truncate max-w-[140px]">{name}</p>
-        <p className="text-gold text-sm">{formatPrice(priceCents)}</p>
+        <p className="text-sm"><Price priceCents={priceCents} /></p>
       </div>
       <button
         onClick={() => {

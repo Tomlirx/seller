@@ -43,3 +43,6 @@ next-env.d.ts
 
 # claude code runtime
 .claude/scheduled_tasks.lock
+
+# Local product source photos (HEIC/zip) — imported via scripts/import-jade-bangles.ts
+products/

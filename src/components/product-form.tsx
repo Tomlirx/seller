@@ -16,6 +16,7 @@ type ProductFormValues = {
   isActive: boolean;
   isFeatured: boolean;
   isCollectionFeatured: boolean;
+  isSold: boolean;
 };
 
 export function ProductForm({ initial }: { initial?: ProductFormValues }) {
@@ -30,6 +31,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
   const [isActive, setIsActive] = useState(initial?.isActive ?? true);
   const [isFeatured, setIsFeatured] = useState(initial?.isFeatured ?? false);
   const [isCollectionFeatured, setIsCollectionFeatured] = useState(initial?.isCollectionFeatured ?? false);
+  const [isSold, setIsSold] = useState(initial?.isSold ?? false);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -89,6 +91,7 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
       isActive,
       isFeatured,
       isCollectionFeatured,
+      isSold,
     };
 
     const res = await fetch(
@@ -260,6 +263,14 @@ export function ProductForm({ initial }: { initial?: ProductFormValues }) {
           onChange={(e) => setIsCollectionFeatured(e.target.checked)}
         />
         Show in homepage 精选系列 (Collection grid)
+      </label>
+      <label className="flex items-center gap-2 text-ink">
+        <input
+          type="checkbox"
+          checked={isSold}
+          onChange={(e) => setIsSold(e.target.checked)}
+        />
+        标记为已售 Mark as sold (shows 已售 badge, blocks purchase)
       </label>
       {error && <p className="text-red-600 text-sm">{error}</p>}
       <div className="flex items-center gap-3">

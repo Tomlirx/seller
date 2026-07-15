@@ -38,6 +38,9 @@ export async function POST(req: Request) {
     if (!product) {
       return NextResponse.json({ error: "A product in your cart is no longer available" }, { status: 400 });
     }
+    if (product.isSold) {
+      return NextResponse.json({ error: `该商品已售 · ${product.name} has been sold` }, { status: 400 });
+    }
     if (product.stockQty < item.quantity) {
       return NextResponse.json({ error: `Not enough stock for ${product.name}` }, { status: 400 });
     }

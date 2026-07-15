@@ -18,6 +18,7 @@ type RecommendedProduct = {
   category: string;
   priceCents: number;
   imageUrls: string[];
+  isSold?: boolean;
 };
 
 export default function CartPage() {

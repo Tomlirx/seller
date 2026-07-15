@@ -72,7 +72,7 @@ export default async function ProductPage({
         </nav>
 
         <div className="grid sm:grid-cols-2 gap-10">
-          <ProductGallery images={product.imageUrls} alt={product.name} />
+          <ProductGallery images={product.imageUrls} alt={product.name} isSold={product.isSold} />
           <div className="flex flex-col gap-4">
             {category && (
               <p className="text-xs tracking-widest text-gold">
@@ -88,7 +88,11 @@ export default async function ProductPage({
               天然翡翠 · 单品现货 NATURAL JADEITE · SINGLE PIECE
             </span>
 
-            {product.stockQty > 0 ? (
+            {product.isSold ? (
+              <div className="flex items-center gap-3 border border-gold/40 px-6 h-[52px] w-fit">
+                <span className="text-gold text-sm uppercase tracking-[0.15em]">已售 · Sold</span>
+              </div>
+            ) : product.stockQty > 0 ? (
               <div id={sentinelId} className="flex flex-col gap-3">
                 <AddToCartButton
                   productId={product.id}
@@ -158,7 +162,7 @@ export default async function ProductPage({
         )}
       </PageContainer>
 
-      {product.stockQty > 0 && (
+      {!product.isSold && product.stockQty > 0 && (
         <StickyAddToCartBar
           productId={product.id}
           name={product.name}

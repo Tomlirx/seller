@@ -14,6 +14,7 @@ const productSchema = z.object({
   isActive: z.boolean(),
   isFeatured: z.boolean().optional(),
   isCollectionFeatured: z.boolean().optional(),
+  isSold: z.boolean().optional(),
 });
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {

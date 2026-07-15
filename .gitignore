@@ -45,4 +45,6 @@ next-env.d.ts
 .claude/scheduled_tasks.lock
 
 # Local product source photos (HEIC/zip) — imported via scripts/import-jade-bangles.ts
-products/
+# Anchored to repo root so it only ignores the top-level source folder,
+# not src/app/products, src/app/admin/products, etc.
+/products/

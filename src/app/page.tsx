@@ -166,9 +166,12 @@ export default async function Home() {
                             src={product.imageUrls[0]}
                             alt={product.name}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-[1.08]"
+                            className={`object-cover transition-transform duration-500 group-hover:scale-[1.08] ${product.isSold ? "brightness-[0.55] grayscale-[0.5]" : ""}`}
                           />
                           <span className="absolute top-2 left-2 z-10 bg-canvas/85 text-text-strong text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                          {product.isSold && (
+                            <span className="absolute top-2 right-2 z-20 bg-canvas/90 text-gold text-[9px] tracking-[0.15em] px-2 py-1 border border-gold/40">已售 SOLD</span>
+                          )}
                         </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center text-ink-soft text-xs">No image</div>
@@ -211,8 +214,11 @@ export default async function Home() {
                   <Link href={`/products/${heroProduct.slug}`} className="group row-span-2 relative overflow-hidden">
                     {heroProduct.imageUrls[0] ? (
                       <>
-                        <Image src={heroProduct.imageUrls[0]} alt={heroProduct.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                        <Image src={heroProduct.imageUrls[0]} alt={heroProduct.name} fill className={`object-cover transition-transform duration-1000 group-hover:scale-[1.06] ${heroProduct.isSold ? "brightness-[0.55] grayscale-[0.5]" : ""}`} />
                         <span className="absolute top-3 left-3 z-10 bg-canvas/85 text-text-strong text-[10px] tracking-[0.1em] px-2.5 py-1">实物原图</span>
+                        {heroProduct.isSold && (
+                          <span className="absolute top-3 right-3 z-20 bg-canvas/90 text-gold text-[10px] tracking-[0.15em] px-2.5 py-1 border border-gold/40">已售 SOLD</span>
+                        )}
                       </>
                     ) : (
                       <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-sm">No image</div>
@@ -222,8 +228,11 @@ export default async function Home() {
                     <Link key={product.id} href={`/products/${product.slug}`} className="group relative overflow-hidden">
                       {product.imageUrls[0] ? (
                         <>
-                          <Image src={product.imageUrls[0]} alt={product.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-[1.06]" />
+                          <Image src={product.imageUrls[0]} alt={product.name} fill className={`object-cover transition-transform duration-1000 group-hover:scale-[1.06] ${product.isSold ? "brightness-[0.55] grayscale-[0.5]" : ""}`} />
                           <span className="absolute top-2 left-2 z-10 bg-canvas/85 text-text-strong text-[9px] tracking-[0.1em] px-2 py-1">实物原图</span>
+                          {product.isSold && (
+                            <span className="absolute top-2 right-2 z-20 bg-canvas/90 text-gold text-[9px] tracking-[0.15em] px-2 py-1 border border-gold/40">已售 SOLD</span>
+                          )}
                         </>
                       ) : (
                         <div className="h-full w-full flex items-center justify-center bg-ivory-light text-ink-soft text-xs">No image</div>

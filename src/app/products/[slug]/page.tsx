@@ -140,9 +140,9 @@ export default async function ProductPage({
           <p className="font-serif text-xl text-ink mb-3">包装与服务</p>
           <Divider className="!justify-start mb-4" />
           <p className="text-ink-soft leading-relaxed">
-            精致礼盒包装，附带证书与保养说明，支持七天无理由退换。
+            精致礼盒包装，附带证书与保养说明。
             <br />
-            Presented in an elegant gift box with a certificate of authenticity and care instructions. 7-day no-questions-asked returns.
+            Presented in an elegant gift box with a certificate of authenticity and care instructions.
           </p>
         </section>
 
